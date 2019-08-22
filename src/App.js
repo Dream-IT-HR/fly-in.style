@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {BrowserRouter} from 'react-router-dom';
 import './App.css';
+import './styles.scss';
 import AppWrapper from './AppWrapper';
 
 class App extends Component {
