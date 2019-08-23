@@ -1,0 +1,5 @@
+.fly-button {
+    .btn-primary {
+        background-color:map-get($theme-colors, "primary");
+    }
+}

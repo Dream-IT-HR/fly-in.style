@@ -1,4 +1,4 @@
-import LocaleSwitcher from './_translations/LocaleSwitcher';
+import LocaleSwitcher from './_shared components/LocaleSwitcher';
 import AppRouter from './AppRouter';
 import { connect } from "react-redux";
 
