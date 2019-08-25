@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Components
-import Homepage from '../screens/homepage-screen/HomepageScreen';
+import HomepageRoot from '../screens/homepage-screen/HomepageScreen-root';
 import About from '../screens/about-screen/AboutScreen';
 // Errors
 import Error403 from '../screens/error-screens/Error403';
@@ -13,7 +13,7 @@ const routes = [
     {
         path: '/',
         exact: true,
-        component: () => <Homepage/>
+        component: () => <HomepageRoot/>
     },
     {
         path: '/about-us',

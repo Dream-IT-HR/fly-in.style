@@ -1,5 +1,31 @@
 .homepage {
+    // background-image: url(/src/_images/landingpage-background-upper-xs.png)
     h1 {
         color:red;
     }
+
+    #image2 {
+        position: relative;
+        height: 300px;
+        width: 500px;
+        // background: url(http://lorempixel.com/500/300);/*image path*/
+        overflow: hidden;/*hides the rest of the circle*/
+    
+        
+        :before {
+          content: "";
+          position: absolute; /*positions with reference to div*/
+          top: 100%;
+          left: 50%;
+          width: 0;/*define value if you didn't want hover*/
+          height: 0;
+          border-radius: 50%;
+          background: tomato;/*could be rgba value (you can remove opacity then)*/
+          opacity: 0.5;
+          transform: translate(-50%, -50%);/*ensures it is in center of image*/
+          transition: all 0.4s;
+        }
+    }
+    
 }
+

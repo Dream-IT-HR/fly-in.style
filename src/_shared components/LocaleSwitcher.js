@@ -9,14 +9,14 @@ class LocaleSwitcher extends Component {
     }
 
     handleButtonClick(e) {
-      alert('primary button clicked');
+      alert('primary button clicked 3');
     }
 
     render() {
       return (
         <div>
           <FlyButtonToolbar>
-            <FlyButton variant='primary' onClick={this.handleButtonClick}>Primary button</FlyButton>
+            <FlyButton variant='primary' onClick={(e) => this.handleButtonClick(e)}>Primary button</FlyButton>
             <FlyButton variant="secondary">Secondary</FlyButton>
             <FlyButton variant="success">Success</FlyButton>
             <FlyButton variant="warning">Warning</FlyButton>
