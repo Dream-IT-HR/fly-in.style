@@ -1,4 +1,12 @@
 .header {
-    z-index: 1;
+    width:100%;
+    position: absolute;
+    top: 0px;
+    background-color:map-get($theme-colors, "primary-light");
+
+    &__login {
+        position: absolute;
+        right:10px;
+    }
 }
 

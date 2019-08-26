@@ -7,7 +7,7 @@ class Navigation extends Component {
     render() {
         return (
             <nav>
-                <Button variant={ButtonVariants.secondary} size={ButtonSizes.small}>Login</Button>
+                <Button className="header__login" variant={ButtonVariants.secondary} size={ButtonSizes.small}>Login</Button>
             </nav>
         );
     }
