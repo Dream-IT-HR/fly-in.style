@@ -7,20 +7,9 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import AOS from 'aos';
 import ReactBreakpoints from 'react-breakpoints'
+import breakpoints from './_helpers/breakpoints';
 
 AOS.init();
-
-
-const breakpoints = {
-    mobile: 320,
-    mobileLandscape: 480,
-    tablet: 768,
-    tabletLandscape: 1024,
-    desktop: 1200,
-    desktopLarge: 1500,
-    desktopWide: 1920,
-  }
-
 
 ReactDOM.render(
     <ReactBreakpoints breakpoints={breakpoints}>

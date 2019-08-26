@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import backgroundUpperImage from '../../_images/landingpage-background-upper-xs.png';
 import backgroundLowerImage from '../../_images/landingpage-background-lower-xs.png';
-import FlyImage from '../../_shared components/FlyImage';
+import FlyImage from '../../_shared components/extended-components/FlyImage';
 
 class HomepageXs extends Component {
 

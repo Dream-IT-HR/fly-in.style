@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import backgroundImage from '../../_images/landingpage-background-original.png';
-import FlyImage from '../../_shared components/FlyImage';
+import FlyImage from '../../_shared components/extended-components/FlyImage';
 
 class HomepageLarge extends Component {
 

@@ -1,5 +1,5 @@
-import FlyButton from './FlyButton';
-import FlyButtonToolbar from './FlyButtonToolbar';
+import FlyButton from './extended-components/FlyButton';
+import FlyButtonToolbar from './extended-components/FlyButtonToolbar';
 import counterpart from 'counterpart';
 import React, {Component} from 'react';
 

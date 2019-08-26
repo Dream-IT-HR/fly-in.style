@@ -1,15 +1,25 @@
-import HomepageXs from './HomepageScreen-xs';
-import HomepageLarge from './HomepageScreen-large';
-import { Media } from 'react-breakpoints';
+// import HomepageXs from './HomepageScreen-xs';
+// import HomepageLarge from './HomepageScreen-large';
+// import { Media } from 'react-breakpoints';
 import React, { Component } from 'react';
+import ResponsiveImage from '../../_shared components/ResponsiveImage';
+import backgroundImageLarge from '../../_images/landingpage-background-original.png';
+import backgroundImageSmall from '../../_images/landingpage-background-xs.png';
 
 class HomepageRoot extends Component {
 
     render() {
         return (
+            
             <div className="homepage" >
                     <div className="homepage-background">
-                        <Media>
+                    
+                    <ResponsiveImage
+                        desktopImage={backgroundImageLarge}
+                        mobileImage={backgroundImageSmall}
+                    ></ResponsiveImage>
+
+                        {/* <Media>
                             {
                                 ({ breakpoints, currentBreakpoint }) =>
                                     breakpoints[currentBreakpoint] > breakpoints.mobileLandscape ? (
@@ -18,18 +28,8 @@ class HomepageRoot extends Component {
                                         <HomepageXs />
                                     )
                             }
-                        </Media>
+                        </Media> */}
                     </div>    
-                    <div>
-                        {/* <div id="image2">
-                            <img src="http://t1.gstatic.com/images?q=tbn:ANd9GcThtVuIQ7CBYssbdwtzZjVLI_uw09SeLmyrxaRQEngnQAked5ZB"/>
-                        </div> */}
-                        <div id="image2">
-                            
-                        </div>
-                    <div id="image1"></div>
-                </div>
-                
             </div>
         );
     }
