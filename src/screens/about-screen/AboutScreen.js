@@ -10,7 +10,7 @@ class About extends Component {
                 <div className="error">
                     <h1>About us</h1>
                 </div>
-                <Button variant={ButtonVariants.primary} size={ButtonSizes.large}>Click me primary!</Button>
+                <Button variant={ButtonVariants.primary} size={ButtonSizes.large}>GET STARTED</Button>
                 <Button variant={ButtonVariants.secondary} size={ButtonSizes.small}>Click me secondary!</Button>
             </div>
         );

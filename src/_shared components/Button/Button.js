@@ -4,7 +4,7 @@ import ButtonVariants from './ButtonVariants';
 
 class Button extends Component {
     render() {
-        let {size, variant, disabled, autofocus, name, type} = this.props;
+        let {size, variant, disabled, autoFocus, name, type} = this.props;
 
         let ret = 
                 <button
@@ -15,7 +15,7 @@ class Button extends Component {
                         (variant === ButtonVariants.secondary ? " flybutton__variant--secondary": "")}
 
                     name={name}
-                    autofocus={autofocus}
+                    autoFocus={autoFocus}
                     type={type}
                     disabled={disabled}
                     onClick={this.props.onClick}

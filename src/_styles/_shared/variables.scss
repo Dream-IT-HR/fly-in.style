@@ -1,24 +1,34 @@
 $theme-colors: (
   "primary": blue,
-  "secondary": green,
+  "secondary": #19ffef,
+
+  "primary-front":rgba(0, 0, 0, 0.8),
+  "primary-back":  #19ffef,
+
+  "secondary-front":#19ffef,
+  "secondary-back": transparent,
+
   "info": #17a2b8,
   "warning": #ffc107,
 );
 
+/* ===  BUTTONS === */
+$border-radius: 4px;
+
 /* ===  FONTS === */
-// $font-path: './fonts';
-// $font-regular: "open-sans-regular", Arial, sans-serif;
-// $font-semi-bold: "open-sans-semi-bold", Arial, sans-serif;
-// $font-bold: "open-sans-bold", Arial, sans-serif;
-// $font-light: "open-sans-light", Arial, sans-serif;
+$font-path: './fonts';
+$font-regular: "open-sans-regular", Arial, sans-serif;
+$font-semi-bold: "open-sans-semi-bold", Arial, sans-serif;
+$font-bold: "open-sans-bold", Arial, sans-serif;
+$font-light: "open-sans-light", Arial, sans-serif;
 
-// $font-size: 16px;
+$font-size: 16px;
 
-// /* ===  BREAKPOINTS === */
-// $screen-xs: 375px;
-// $screen-sm: 600px;
-// $screen-md: 768px;
-// $screen-lg: 1024px;
+/* ===  BREAKPOINTS === */
+$screen-xs: 375px;
+$screen-sm: 600px;
+$screen-md: 768px;
+$screen-lg: 1024px;
 
-// /* === USAGE === */
-// // @media (max-width: $screen-md) { ... }
+/* === USAGE === */
+// @media (max-width: $screen-md) { ... }
