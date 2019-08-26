@@ -1,30 +1,26 @@
 .homepage {
     // background-image: url(/src/_images/landingpage-background-upper-xs.png)
-    h1 {
-        color:red;
+    width: 100%;
+    height: 100vh;
+    
+    .homepage-background {
+        width: 100%;
+        height: 100%;
+
+        position: relative;
+
+        .responsiveImage::after {
+            content: '';
+            background-image: linear-gradient(181deg, rgba(0, 255, 212, 0.46), rgba(29, 44, 255, 0.77));
+            position: fixed;
+            top: 0px;
+            height:100%;
+            width:100%
+        }
     }
 
-    #image2 {
-        position: relative;
-        height: 300px;
-        width: 500px;
-        // background: url(http://lorempixel.com/500/300);/*image path*/
-        overflow: hidden;/*hides the rest of the circle*/
-    
-        
-        :before {
-          content: "";
-          position: absolute; /*positions with reference to div*/
-          top: 100%;
-          left: 50%;
-          width: 0;/*define value if you didn't want hover*/
-          height: 0;
-          border-radius: 50%;
-          background: tomato;/*could be rgba value (you can remove opacity then)*/
-          opacity: 0.5;
-          transform: translate(-50%, -50%);/*ensures it is in center of image*/
-          transition: all 0.4s;
-        }
+    h1 {
+        color:red;
     }
     
 }

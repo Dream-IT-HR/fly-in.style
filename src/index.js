@@ -6,17 +6,17 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import AOS from 'aos';
-import ReactBreakpoints from 'react-breakpoints'
-import breakpoints from './_helpers/breakpoints';
+// import ReactBreakpoints from 'react-breakpoints'
+// import breakpoints from './_helpers/breakpoints';
 
 AOS.init();
 
 ReactDOM.render(
-    <ReactBreakpoints breakpoints={breakpoints}>
+    // <ReactBreakpoints breakpoints={breakpoints}>
         <Provider store={store}>
             <App/>
-        </Provider>
-    </ReactBreakpoints>,
+        </Provider>,
+    // </ReactBreakpoints>,
     document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
