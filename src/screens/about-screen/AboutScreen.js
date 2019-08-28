@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import Button from '../../_shared components/Button/Button';
+import React, {lazy} from 'react';
 import ButtonVariants from '../../_shared components/Button/ButtonVariants';
 import ButtonSizes from '../../_shared components/Button/ButtonSizes';
 
-class About extends Component {
-    render() {
+const Button = lazy(() => import('../../_shared components/Button/Button'));
+
+function fAbout() {    
         return (
             <div className="container">
                 <div className="error">
@@ -14,7 +14,7 @@ class About extends Component {
                 <Button variant={ButtonVariants.secondary} size={ButtonSizes.small}>Click me secondary!</Button>
             </div>
         );
-    }
 }
-    
+const About = React.memo(fAbout);
+
 export default About;

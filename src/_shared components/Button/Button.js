@@ -1,19 +1,19 @@
-import React, {Component} from 'react';
+import React from 'react';
 import ButtonSizes from './ButtonSizes';
 import ButtonVariants from './ButtonVariants';
 
-class Button extends Component {
-    render() {
-        let {className, size, variant, disabled, autoFocus, name, type} = this.props;
+function fButton(props)  {
+        let {className, size, variant, disabled, autoFocus, name, type} = props;
 
-        let ret = 
-                <button
+        return (
+            <button
                     className={
                         (className ? className + " ": "") +
                         "flybutton" + 
                         (size === ButtonSizes.large ? " flybutton__size--large": "") + 
                         (size === ButtonSizes.small ? " flybutton__size--small" : "") +
                         (variant === ButtonVariants.primary ? " flybutton__variant--primary": "") +
+                        (variant === ButtonVariants.dark ? " flybutton__variant--dark": "") +
                         (variant === ButtonVariants.secondary ? " flybutton__variant--secondary": "")
                         }
 
@@ -21,13 +21,13 @@ class Button extends Component {
                     autoFocus={autoFocus}
                     type={type}
                     disabled={disabled}
-                    onClick={this.props.onClick}
+                    onClick={props.onClick}
                     >
-                    {this.props.children}
-                </button>;
-
-        return (ret);
+                    {props.children}
+                </button>
+        );
     }    
-}
+
+const Button = React.memo(fButton);
 
 export default Button;

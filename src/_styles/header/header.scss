@@ -1,12 +1,21 @@
 .header {
     width:100%;
+    height: 40px;
     position: absolute;
     top: 0px;
     background-color:map-get($theme-colors, "primary-light");
+    z-index: 1;
 
-    &__login {
-        position: absolute;
-        right:10px;
+    &__nav {
+        display: flex;
+        justify-content: space-between;
+
+        &__callToActions {
+            position: absolute;
+            right:0px;
+            display: flex;
+            justify-content: space-between;
+        }
     }
 }
 

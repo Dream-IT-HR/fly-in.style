@@ -1,15 +1,16 @@
-import React, {Component} from 'react';
-import Navigation from './Navigation';
+import React, {lazy} from 'react';
 
-class Header extends Component {
-    render() {
-        return (
-            <div className="header">
-                <Navigation/>
-            </div>
-            
-        );
-    }
+const Navigation = lazy(() => import('./Navigation'));
+
+function fHeader() {
+    return (
+        <div className="header">
+            <Navigation/>
+        </div>
+        
+    );
 }
+
+const Header = React.memo(fHeader);
 
 export default Header;

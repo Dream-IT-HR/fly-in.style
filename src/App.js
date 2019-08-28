@@ -1,20 +1,21 @@
-import React, {Component} from 'react';
+import React, {lazy, Suspense} from 'react';
 import {BrowserRouter} from 'react-router-dom';
 import './App.css';
 import './styles.scss';
-import AppWrapper from './AppWrapper';
+const AppWrapper = lazy(() => import('./AppWrapper'));
 
-class App extends Component {
-  render() {
-    return (
-        <div>
-          <BrowserRouter>
+function App() {
+  return (
+      <div>
+        <BrowserRouter>
+          {/* <Suspense fallback={<div>Loading...</div>}> */}
+          <Suspense fallback={<div>Loading...</div>}> 
             <AppWrapper/>
-          </BrowserRouter>
-        </div>
-    );
-  }
+          </Suspense>
+        </BrowserRouter>
+      </div>
+  );
 }
 
 export default App;
-//export default withRouter(App);
+

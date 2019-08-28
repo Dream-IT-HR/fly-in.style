@@ -32,6 +32,13 @@
             color:map-get($theme-colors, "secondary-front");
             padding: 5px 10px;
         }
+
+        &--dark {
+            background-color:map-get($theme-colors, "dark-back");;
+            border: solid 1px map-get($theme-colors, "dark-front");
+            color:map-get($theme-colors, "dark-front");
+            padding: 5px 10px;
+        }
     }
 
     &__size {
