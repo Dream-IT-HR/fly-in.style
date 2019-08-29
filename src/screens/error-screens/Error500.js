@@ -4,8 +4,7 @@ import ErrorFooter from "./ErrorFooter";
 import Translate from 'react-translate-component';
 
 // SVG's
-import SVGInline from 'react-svg-inline';
-import Image500 from '../../_images/500.svg';
+import {ReactComponent as Image500} from '../../_images/500.svg';
 
 class Error500 extends Component {
     render() {
@@ -14,7 +13,7 @@ class Error500 extends Component {
                 <div className="error">
                     <h1><Translate content={'error.error500'} /></h1>
                     <div className="error__img">
-                        <SVGInline svg={Image500}/>
+                        <Image500 alt="Error 500 image"/>
                     </div>
                     <ErrorNotification/>
                     <ErrorFooter/>

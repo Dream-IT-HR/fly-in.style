@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import SVGInline from 'react-svg-inline';
 import { withRouter } from 'react-router-dom';
 //import { connect } from 'react-redux';
-import errorSvg from '../../_images/cloud-error.svg';
+import {ReactComponent as ErrorSvg} from '../../_images/cloud-error.svg';
 // import EMButton from '../../shared/EMButton';
 
 class ErrorLink extends Component {
@@ -17,7 +16,7 @@ class ErrorLink extends Component {
                 <div className="shopping-cart">
                     <div className="shopping-cart__products">
                         <div className="shopping-cart__products-icon">
-                            <SVGInline svg={errorSvg} />
+                            <ErrorSvg alt="Error 500 image"/>
                         </div>
                         <div className="shopping-cart__products-empty-text">
                             <p className="paragraph-text">
