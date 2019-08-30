@@ -8,7 +8,7 @@ const Hambi = lazy(() => import('../header/Hambi'));
 
 function fNavigation() {
         return (
-            <nav className="header__nav">
+            <nav className="header__nav clearfix">
                 <div className="header__nav__nav-icon">
                     <Hambi></Hambi>
                 </div>
@@ -17,8 +17,8 @@ function fNavigation() {
                     <p>FlyinLine</p>
                 </div>
                 <div className="header__nav__callToActions">
-                    <Button className="header__login" variant={ButtonVariants.secondary} size={ButtonSizes.small}>Login</Button>
-                    <Button className="header__getstarted" variant={ButtonVariants.dark} size={ButtonSizes.small}>Get Started</Button>
+                    <Button className="header__nav__callToActions__login" variant={ButtonVariants.secondary} size={ButtonSizes.small}>Login</Button>
+                    <Button className="header__nav__callToActions__getstarted" variant={ButtonVariants.dark} size={ButtonSizes.small}>Get Started</Button>
                 </div>
             </nav>
         );
