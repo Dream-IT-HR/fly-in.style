@@ -3,7 +3,8 @@ import ResponsiveImage from '../../_shared components/ResponsiveImage';
 import backgroundImageLarge from '../../_images/landingpage-background-original.png';
 import backgroundImageSmall from '../../_images/landingpage-background-xs.png';
 
-const Header = lazy(() => import('../header/Header'));
+//const Header = lazy(() => import('../header/Header'));
+import Header from '../header/Header';
 
 function fHomepageRoot() {
     return (            

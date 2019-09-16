@@ -1,6 +1,7 @@
 import React, {lazy} from 'react';
 
-const Navigation = lazy(() => import('./Navigation'));
+// const Navigation = lazy(() => import('./Navigation'));
+import Navigation from './Navigation';
 
 function fHeader() {
     return (

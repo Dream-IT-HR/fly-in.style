@@ -3,6 +3,7 @@ import React from 'react';
 // Components
 import HomepageRoot from '../screens/homepage-screen/HomepageScreen-root';
 import About from '../screens/about-screen/AboutScreen';
+import Login from '../screens/login-screen/LoginScreen';
 // Errors
 import Error403 from '../screens/error-screens/Error403';
 import Error404 from '../screens/error-screens/Error404';
@@ -19,6 +20,11 @@ const routes = [
         path: '/about-us',
         exact: true,
         component: () => <About/>
+    },
+    {
+        path: '/login',
+        exact: true,
+        component: () => <Login/>
     },
     {
         path: '/403',
