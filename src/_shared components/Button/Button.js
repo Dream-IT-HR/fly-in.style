@@ -2,8 +2,22 @@ import React from 'react';
 import ButtonSizes from './ButtonSizes';
 import ButtonVariants from './ButtonVariants';
 
+const onClick = (linkPath) =>
+{
+    if (linkPath) {
+        window.location = linkPath;
+    }
+}
+
 function fButton(props)  {
-        let {id, className, size, variant, disabled, autoFocus, name, type} = props;
+        let {id, className, size, variant, disabled, autoFocus, name, type, linkPath} = props;
+
+        let handleClick = () => { onClick(linkPath); };
+
+        if(props.onClick)
+        {
+            handleClick = () => { props.onClick(); };
+        }
 
         return (
             <button
@@ -22,7 +36,7 @@ function fButton(props)  {
                 autoFocus={autoFocus}
                 type={type}
                 disabled={disabled}
-                onClick={props.onClick}
+                onClick={handleClick}
                 >
                 {props.children}
             </button>
