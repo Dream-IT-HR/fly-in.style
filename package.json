@@ -18,6 +18,7 @@
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.1",
     "react-translate-component": "^0.15.1",
+    "reactn": "^2.2.3",
     "redux": "^4.0.4",
     "redux-devtools-extension": "^2.13.8",
     "redux-promise": "^0.6.0",

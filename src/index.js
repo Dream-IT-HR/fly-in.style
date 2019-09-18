@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {setGlobal} from 'reactn';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import store from './redux/store';
@@ -10,6 +10,13 @@ import AOS from 'aos';
 // import breakpoints from './_helpers/breakpoints';
 
 AOS.init();
+
+setGlobal({
+    login: {
+      username: 'Guest',
+      roles:[]
+    }
+  });
 
 ReactDOM.render(
     // <ReactBreakpoints breakpoints={breakpoints}>
