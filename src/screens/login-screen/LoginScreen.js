@@ -1,9 +1,9 @@
-import React, {useGlobal} from 'reactn';
+import React from 'reactn';
 import * as authService from '../../services/authService';
 import config from '../../config.json';
 import { GoogleLogin } from 'react-google-login';
 import { PureComponent } from 'reactn';
-import { resolve } from 'q';
+import LocalToken from '../../_shared components/LocalToken';
 
 // const Button = lazy(() => import('../../_shared components/Button/Button'));
 
@@ -28,6 +28,8 @@ class FLogin extends PureComponent {
           r.json().then(login => {
             const token = login.token;
             loggedInUser = authService.GetValidUserFromToken(token);
+            
+            LocalToken.SetTokenToLocalStorage(token);
             this.setGlobal({login: loggedInUser});
           });
         })

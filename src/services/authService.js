@@ -1,7 +1,10 @@
 var jwtDecode = require('jwt-decode');
 
 export function GetValidUserFromToken(token) {
-    let ret = null;
+    let ret = {
+        username: null,
+        roles: []
+    };
 
     if (token) {
         var decodedToken = jwtDecode(token);

@@ -1,8 +1,17 @@
 import AppRouter from './AppRouter';
 import { connect } from "react-redux";
-import React, {Component} from 'react';
+import React, {Component, setGlobal} from 'reactn';
 import {withRouter} from 'react-router-dom';
 import '../src/_translations/translations';
+import LocalToken from '../src/_shared components/LocalToken';
+import * as authService from '../src/services/authService';
+
+setGlobal({
+    login: {
+      username: authService.GetValidUserFromToken(LocalToken.GetTokenFromLocalStorage()).username,
+      roles: authService.GetValidUserFromToken(LocalToken.GetTokenFromLocalStorage()).roles
+    }
+  });
 
 class AppWrapper extends Component {
     state = {
