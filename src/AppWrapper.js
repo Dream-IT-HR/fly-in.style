@@ -9,6 +9,7 @@ import * as authService from '../src/services/authService';
 setGlobal({
     login: {
       username: authService.GetValidUserFromToken(LocalToken.GetTokenFromLocalStorage()).username,
+      nickname: authService.GetValidUserFromToken(LocalToken.GetTokenFromLocalStorage()).nickname,
       roles: authService.GetValidUserFromToken(LocalToken.GetTokenFromLocalStorage()).roles
     }
   });

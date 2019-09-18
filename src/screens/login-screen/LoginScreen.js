@@ -9,6 +9,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 // const Button = lazy(() => import('../../_shared components/Button/Button'));
 
 class FLogin extends PureComponent {    
+  
   googleResponse = (response) => {
     if (!response.tokenId) {
       console.error("Unable to get tokenId from Google", response)
@@ -36,7 +37,7 @@ class FLogin extends PureComponent {
         })
   };
 
-function fLogin() {    
+  render() {
         return (
             <div className="container">
                 {/* <Button variant={ButtonVariants.primary} size={ButtonSizes.large}>Login</Button>
@@ -78,12 +79,13 @@ function fLogin() {
                     <GoogleLogin
                         clientId={config.GOOGLE_CLIENT_ID}
                         buttonText="Google Login"
-                        onSuccess={googleResponse}
-                        onFailure={googleResponse}
+                        onSuccess={this.googleResponse}
+                        onFailure={this.googleResponse}
                     />
                 </div>
             </div>
         );
+    }
 }
 
 const Login = React.memo(FLogin);

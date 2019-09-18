@@ -3,6 +3,7 @@ var jwtDecode = require('jwt-decode');
 export function GetValidUserFromToken(token) {
     let ret = {
         username: null,
+        nickname: null,
         roles: []
     };
 
@@ -14,6 +15,7 @@ export function GetValidUserFromToken(token) {
         {
             ret = {
                 username: decodedToken["Username"],
+                nickname: decodedToken["Nickname"],
                 roles: decodedToken["Userroles"]
             };
         }

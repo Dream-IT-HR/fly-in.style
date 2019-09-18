@@ -5,7 +5,7 @@ function  FGreeter() {
     const [login, ] = useGlobal('login');
 
     return (
-        <Translate name={login.username} lastname={''} content="global.greeting" />
+        <Translate name={login.nickname} lastname={''} content="global.greeting" />
     )
 }
 
