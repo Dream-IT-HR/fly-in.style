@@ -1,16 +1,23 @@
-//import jwt from 'jsonwebtoken';
 var jwtDecode = require('jwt-decode');
 
-export function UserIsValid(token) {
+export function GetValidUserFromToken(token) {
+    let ret = {
+        username: null,
+        roles: []
+    };
+
     if (token) {
         var decodedToken = jwtDecode(token);
 
-        alert('Username: ' + decodedToken["Username"]);
-        alert('Roles: ' + decodedToken["Userroles"]);
-
         var dateNow = new Date();
-        if (decodedToken.exp > dateNow.getTime() / 1000) return true;
+        if (decodedToken.exp > dateNow.getTime() / 1000)
+        {
+            ret = {
+                username: decodedToken["Username"],
+                roles: decodedToken["Userroles"]
+            };
+        }
     }
         
-    return false;
+    return ret;
 }

@@ -2,6 +2,7 @@ import React, {lazy} from 'react';
 import ButtonVariants from '../../_shared components/Button/ButtonVariants';
 import ButtonSizes from '../../_shared components/Button/ButtonSizes';
 import {ReactComponent as WingsOfGlorySvg} from '../../_images/wingsofglory.svg';
+import Greeter from './Greeter';
 
 const Button = lazy(() => import('../../_shared components/Button/Button'));
 const Hambi = lazy(() => import('../header/Hambi'));
@@ -17,6 +18,7 @@ function fNavigation() {
                     <p>FlyinLine</p>
                 </div>
                 <div className="header__nav__callToActions">
+                    <Greeter/>
                     <Button className="header__nav__callToActions__login" variant={ButtonVariants.secondary} size={ButtonSizes.small} linkPath='/login'>Login</Button>
                     <Button className="header__nav__callToActions__getstarted" variant={ButtonVariants.dark} size={ButtonSizes.small}>Get Started</Button>
                 </div>

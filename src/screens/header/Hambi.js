@@ -4,7 +4,7 @@ function HambiFunction() {
     // const[responsiveMenuIsOpen, setResponsiveMenuIsOpen] = useState(false);
 
     return (
-        <div class="nav-icon">
+        <div className="nav-icon">
              {/* className={"animated slideInDown" + (responsiveMenuIsOpen ? " is-active" : "")} onClick={setResponsiveMenuIsOpen(!responsiveMenuIsOpen)}> */}
             <span className="nav-icon__bar1"></span>
             <span className="nav-icon__bar2"></span>
