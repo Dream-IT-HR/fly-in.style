@@ -1,56 +1,101 @@
 import AppRouter from './AppRouter';
-import { connect } from "react-redux";
-import React, {Component, setGlobal} from 'reactn';
+import React, {setGlobal} from 'reactn';
 import {withRouter} from 'react-router-dom';
 import '../src/_translations/translations';
-import LocalToken from '../src/_shared components/LocalToken';
-import * as authService from '../src/services/authService';
+import authenticationService from '../src/services/authenticationService';
+import Modal from "./_shared components/Modal";
+import useModal from './_custom hooks/useModal';
 
 setGlobal({
     login: {
-      username: authService.GetValidUserFromToken(LocalToken.GetTokenFromLocalStorage()).username,
-      nickname: authService.GetValidUserFromToken(LocalToken.GetTokenFromLocalStorage()).nickname,
-      roles: authService.GetValidUserFromToken(LocalToken.GetTokenFromLocalStorage()).roles
+      username: authenticationService.GetValidUserFromToken(authenticationService.GetTokenFromLocalStorage()).username,
+      nickname: authenticationService.GetValidUserFromToken(authenticationService.GetTokenFromLocalStorage()).nickname,
+      roles: authenticationService.GetValidUserFromToken(authenticationService.GetTokenFromLocalStorage()).roles
     }
   });
 
-class AppWrapper extends Component {
-    state = {
-        showApp: false
-    }
+const AppWrapper = () => {
+    const {isShowing, toggle} = useModal();
 
-    render() {
-        return (
-            <div className="app-wrapper">
-                {/*
-                <div>
-                    <Link className="about-us" to='/about-us'> About us</Link>
-                </div> */}
-                {/* <div> */}
-                    {/* <Link className="homepage" to='/'><Translate content={'homepage.title'}/></Link> */}
-                {/* </div> */}
-                <AppRouter/>
-            </div>
-        )
-    }
-}
+    return (
+         <div className="app-wrapper">
+            <button className="button-default" onClick={toggle}>Show Modal</button>
+             <AppRouter/>
+             <Modal
+                 isShowing={isShowing}
+                 hide={toggle}
+             />
+         </div>
+    );
+  };
+export default withRouter(AppWrapper);
+
+// function FAppWrapper() {
+//     const [isShowing, toggle] = useModal(false);
+    
+//     return (
+//         <div className="app-wrapper">
+//             {/*
+//             <div>
+//                 <Link className="about-us" to='/about-us'> About us</Link>
+//             </div> */}
+//             {/* <div> */}
+//                 {/* <Link className="homepage" to='/'><Translate content={'homepage.title'}/></Link> */}
+//             {/* </div> */}
+//             <AppRouter/>
+        
+//             <Modal
+//                 isShowing={isShowing}
+//                 hide={toggle}
+//             />
+//         </div>
+//     );
+// }
+
+// //const AppWrapper = React.memo(FAppWrapper);
+// const AppWrapper = FAppWrapper;
+
+// //export default withRouter(AppWrapper);
+// export default AppWrapper;
 
 
-const mapStateToProps = (state) => {
-    return {
-        // settings: state.settings.theme
-    };
-};
+// class AppWrapper2 extends Component {
+//     state = {
+//         showApp: false
+//     }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        // setUser: (token) => dispatch(setUser(token)),
-        // getStateMachines: () => dispatch(getStateMachines()),
-        // placeOrderByKvalue: (param) => dispatch(placeOrderByKvalue(param)),
-        // login: (user) => dispatch(login(user)),
-        // forgotPassword: (email) => dispatch(forgotPassword(email)),
-        // getUserCounts: () => dispatch(getUserCounts())
-    };
-};
+//     render() {
+//         return (
+//             <div className="app-wrapper">
+//                 {/*
+//                 <div>
+//                     <Link className="about-us" to='/about-us'> About us</Link>
+//                 </div> */}
+//                 {/* <div> */}
+//                     {/* <Link className="homepage" to='/'><Translate content={'homepage.title'}/></Link> */}
+//                 {/* </div> */}
+//                 <AppRouter/>
+//             </div>
+//         )
+//     }
+// }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AppWrapper));
+
+// const mapStateToProps = (state) => {
+//     return {
+//         // settings: state.settings.theme
+//     };
+// };
+
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         // setUser: (token) => dispatch(setUser(token)),
+//         // getStateMachines: () => dispatch(getStateMachines()),
+//         // placeOrderByKvalue: (param) => dispatch(placeOrderByKvalue(param)),
+//         // login: (user) => dispatch(login(user)),
+//         // forgotPassword: (email) => dispatch(forgotPassword(email)),
+//         // getUserCounts: () => dispatch(getUserCounts())
+//     };
+// };
+
+// export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AppWrapper));

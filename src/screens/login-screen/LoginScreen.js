@@ -1,42 +1,13 @@
 import React from 'reactn';
-import * as authService from '../../services/authService';
-import config from '../../config.json';
-import { GoogleLogin } from 'react-google-login';
+import googleService from '../../services/googleService';
 import { PureComponent } from 'reactn';
-import LocalToken from '../../_shared components/LocalToken';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { GoogleLogin } from 'react-google-login';
+import config from '../../config.json';
 
 // const Button = lazy(() => import('../../_shared components/Button/Button'));
 
 class FLogin extends PureComponent {    
-  
-  googleResponse = (response) => {
-    if (!response.tokenId) {
-      console.error("Unable to get tokenId from Google", response)
-      return;
-    }
-
-    const tokenBlob = new Blob([JSON.stringify({ tokenId: response.tokenId }, null, 2)], { type: 'application/json' });
-    const options = {
-      method: 'POST',
-      body: tokenBlob,
-      mode: 'cors',
-      cache: 'default'
-    };
-    
-    let loggedInUser = null;
-    fetch(config.GOOGLE_AUTH_CALLBACK_URL, options)
-        .then(r => {
-          r.json().then(login => {
-            const token = login.token;
-            loggedInUser = authService.GetValidUserFromToken(token);
-            
-            LocalToken.SetTokenToLocalStorage(token);
-            this.setGlobal({login: loggedInUser});
-          });
-        })
-  };
-
   render() {
         return (
             <div className="container">
@@ -79,8 +50,8 @@ class FLogin extends PureComponent {
                     <GoogleLogin
                         clientId={config.GOOGLE_CLIENT_ID}
                         buttonText="Google Login"
-                        onSuccess={this.googleResponse}
-                        onFailure={this.googleResponse}
+                        onSuccess={googleService.handleGoogleResponseAsync}
+                        onFailure={googleService.handleGoogleResponseAsync}
                     />
                 </div>
             </div>
