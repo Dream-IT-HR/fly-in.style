@@ -27,7 +27,7 @@ function GetValidUserFromToken(token) {
 }
 
 async function LoginWithGoogleAsync(options) {
-    await api.GetAsync(config.GOOGLE_AUTH_CALLBACK_URL, options)
+    return await api.FetchAsync(config.GOOGLE_AUTH_CALLBACK_URL, options)
         .then(login => {
             const token = login.token;
             let loggedInUser = GetValidUserFromToken(token);
@@ -38,6 +38,7 @@ async function LoginWithGoogleAsync(options) {
         .catch(error =>
         {
             console.log(error);
+            throw new Error(error);
         });
     
         // fetch(config.GOOGLE_AUTH_CALLBACK_URL, options)

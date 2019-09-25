@@ -1,5 +1,8 @@
-async function GetAsync(url, options) {
+import config from '../config.json';
+
+async function FetchAsync(url, options) {
     try {
+        url = config.BASEURL + url;
         const r = await fetch(url, options);
         const json = await r.json();
         
@@ -15,13 +18,8 @@ async function GetAsync(url, options) {
     }
 }
 
-function PostAsync(url, options) {
-
-}
-
 let api = {
-    GetAsync,
-    PostAsync
+    FetchAsync
 };
 
 export default api;

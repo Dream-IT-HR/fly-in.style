@@ -13,6 +13,7 @@ class FLogin extends PureComponent {
             <div className="container">
                 {/* <Button variant={ButtonVariants.primary} size={ButtonSizes.large}>Login</Button>
                 <Button variant={ButtonVariants.primary} size={ButtonSizes.large}>Google</Button> */}
+
              <Formik
                 initialValues={{ email: '', password: '' }}
                 validate={values => {
