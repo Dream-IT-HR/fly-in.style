@@ -1,9 +1,10 @@
-import React, {lazy} from 'react';
+// import React, {lazy} from 'react';
+import React from 'reactn';
 
 // const Navigation = lazy(() => import('./Navigation'));
 import Navigation from './Navigation';
 
-function fHeader() {
+function FHeader() {
     return (
         <div className="header">
             <Navigation/>
@@ -12,6 +13,6 @@ function fHeader() {
     );
 }
 
-const Header = React.memo(fHeader);
+const Header = React.memo(FHeader);
 
 export default Header;

@@ -7,14 +7,15 @@ const Modal = ({ isShowing, hide }) => isShowing ? ReactDOM.createPortal(
     <div className="modal-wrapper" aria-modal aria-hidden tabIndex={-1} role="dialog"
      style={{
          position:'fixed',
+         top:'50%',
          left: '50%',
-         transform: 'translate(-50%,0)',
-         'background-color': 'aquamarine',
-         'margin-left': '10px',
-         'margin-right': '10px',
-         'border-width': 'thin',
-         'border-style': 'solid',
-         'padding': '10px'
+         transform: 'translate(-50%,-50%)',
+         backgroundColor: 'aquamarine',
+         marginleft: '10px',
+         marginright: '10px',
+         borderwidth: 'thin',
+         borderStyle: 'solid',
+         padding: '5px'
     }}
     >
       <div className="modal">

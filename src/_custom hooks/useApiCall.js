@@ -5,11 +5,15 @@ const defaultOptions = {};
 const defaultDebounceMiliseconds = {};
 
 const useApiCall = (apiFunction, options = defaultOptions, debounceMiliseconds = defaultDebounceMiliseconds) => {
+  let debouncedOptions = useDebounce(options, debounceMiliseconds);
+
+  return useApiCallDebounced(apiFunction, debouncedOptions, debounceMiliseconds);
+};
+
+const useApiCallDebounced = (apiFunction, debouncedOptions, debounceMiliseconds) => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
-  
-  let debouncedOptions = useDebounce(options, debounceMiliseconds);
 
   useEffect(() => {
     (async () => {
@@ -17,7 +21,7 @@ const useApiCall = (apiFunction, options = defaultOptions, debounceMiliseconds =
       setLoading(true);
       
       try {
-        let data = await apiFunction(options);
+        let data = await apiFunction(debouncedOptions);
         setData(data);
       } catch (e) {
         setError(e);
@@ -26,9 +30,9 @@ const useApiCall = (apiFunction, options = defaultOptions, debounceMiliseconds =
       setLoading(false);
 
     })();
-  }, [apiFunction, debouncedOptions]);
+  }, [apiFunction, debouncedOptions, debounceMiliseconds]);
 
-  return { error, loading, data };
-};
+  return [ error, loading, data ];
+}
 
 export default useApiCall;
