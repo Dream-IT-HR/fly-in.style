@@ -1,3 +1,4 @@
 {
-  "greeting": "Hello %(name)s ! How are you today?"
+  "greeting": "Hello %(name)s ! How are you today?",
+  "productName": "Flyin"
 }

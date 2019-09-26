@@ -1,3 +1,4 @@
+import Translate from 'react-translate-component';
 import React, {lazy} from 'react';
 import ButtonVariants from '../../_shared components/Button/ButtonVariants';
 import ButtonSizes from '../../_shared components/Button/ButtonSizes';
@@ -15,7 +16,9 @@ function fNavigation() {
                 </div>
                 <div className="header__nav__brand">
                     <WingsOfGlorySvg className="wingsofglory" alt="logo"/>
-                    <p>FlyinLine</p>
+                    <p>
+                        <Translate content="global.productName" />
+                    </p>
                 </div>
                 <div className="header__nav__callToActions">
                     <Greeter/>
