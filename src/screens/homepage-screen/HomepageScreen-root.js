@@ -17,9 +17,9 @@ function FHomepageRoot() {
     if (error) return <div> {error.message} </div>;
     if (loading) return <div>...loading</div>
     
-    let value1 = '';
+    let values = '';
     if (data && data.length > 0) {
-        value1 = data[0];
+        values = data.join();
     }
 
     return (            
@@ -29,7 +29,7 @@ function FHomepageRoot() {
             placeholder="Test debounce get values"
             onChange={e => setSearchTerm({name: e.target.value})}
         />     
-            <div>{value1}</div>
+            <div>{values}</div>
 {/* 
             <div className="homepage-background">
                 <Header/>

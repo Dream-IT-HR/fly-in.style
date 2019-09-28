@@ -1,6 +1,7 @@
 {
   "GOOGLE_CLIENT_ID": "632439058127-b3ev5ikvlqdkj9vgcoj5b4lq9hfmev3a.apps.googleusercontent.com",
-  "GOOGLE_AUTH_CALLBACK_URL": "https://localhost:44359/api/Authentication/google",
+  "GOOGLE_AUTH_CALLBACK_URL": "api/Authentication/google",
+  "REFRESH_TOKEN_URL": "api/Authentication/refresh",
   "CLIENT_SECRET": "iARJIZ8G_lMaQZZDA_e2ywGm",
   "BASEURL": "https://localhost:44359/"
 }

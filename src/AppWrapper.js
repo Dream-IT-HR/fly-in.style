@@ -6,13 +6,7 @@ import authenticationService from '../src/services/authenticationService';
 import Modal from "./_shared components/Modal";
 import useModal from './_custom hooks/useModal';
 
-setGlobal({
-    login: {
-      username: authenticationService.GetValidUserFromToken(authenticationService.GetTokenFromLocalStorage()).username,
-      nickname: authenticationService.GetValidUserFromToken(authenticationService.GetTokenFromLocalStorage()).nickname,
-      roles: authenticationService.GetValidUserFromToken(authenticationService.GetTokenFromLocalStorage()).roles
-    },
-  });
+authenticationService.ApplyLogin();
 
 const AppWrapper = () => {
     const [isShowing2, toggle] = useModal();

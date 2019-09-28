@@ -1,3 +1,4 @@
+import {setGlobal} from 'reactn';
 import api from './_api';
 import config from '../config.json';
 var jwtDecode = require('jwt-decode');
@@ -26,61 +27,117 @@ function GetValidUserFromToken(token) {
     return ret;
 }
 
+function ApplyLogin()
+{
+    setGlobal({
+        login: {
+          username: authenticationService.GetValidUserFromToken(authenticationService.GetTokenFromLocalStorage()).username,
+          nickname: authenticationService.GetValidUserFromToken(authenticationService.GetTokenFromLocalStorage()).nickname,
+          roles: authenticationService.GetValidUserFromToken(authenticationService.GetTokenFromLocalStorage()).roles
+        },
+    });
+    
+}
+
 async function LoginWithGoogleAsync(options) {
-    return await api.FetchAsync(config.GOOGLE_AUTH_CALLBACK_URL, options)
+    return await api.PostAsync(config.GOOGLE_AUTH_CALLBACK_URL, options)
         .then(login => {
-            const token = login.token;
-            let loggedInUser = GetValidUserFromToken(token);
-            
-            SetTokenToLocalStorage(token);
-            this.setGlobal({login: loggedInUser});
+            SetTokenToLocalStorage(login.token);
+            SetTokenToLocalStorage(login.refreshToken, authenticationService.Constants.RefreshTokenStorageKey);
+
+            ApplyLogin();
         })
         .catch(error =>
         {
             console.log(error);
             throw new Error(error);
         });
+}
+
+function GetOptionsWithRefreshTokenAuthorizationHeader(refreshToken)
+{    
+    let bearer = null;
+    let opt = {};
+
+    if (refreshToken) {
+        bearer = 'Bearer ' + refreshToken;
+        opt = {
+            headers: {
+                'Authorization': bearer
+            }};
+    }
     
-        // fetch(config.GOOGLE_AUTH_CALLBACK_URL, options)
-        // .then(r => {
-        //   r.json()
-        //     .then(login => {
-        //         const token = login.token;
-        //         let loggedInUser = GetValidUserFromToken(token);
+    return opt;
+}
+
+async function RefreshLoginAsync() {
+    let refreshToken = authenticationService.GetTokenFromLocalStorage(authenticationService.Constants.RefreshTokenStorageKey);
                 
-        //         SetTokenToLocalStorage(token);
-        //         this.setGlobal({login: loggedInUser});
-        //     })
-        //     .catch(error =>
-        //     {
-        //         console.log(error);
-        //     });
-        // })
-        // .catch(error => {
-        //     console.log(error);
-        // });
+    if (refreshToken) {
+        const options = {
+            mode: 'cors',
+            cache: 'default',
+            body: ''
+        };
+
+        let authOptions = GetOptionsWithRefreshTokenAuthorizationHeader(refreshToken);
+
+        const mergedOptions = {...options, ...authOptions };
+
+        return await api.PostAsync(config.REFRESH_TOKEN_URL, mergedOptions, true)
+            .then(login => {
+                SetTokenToLocalStorage(login.token);
+                SetTokenToLocalStorage(login.refreshToken, authenticationService.Constants.RefreshTokenStorageKey);
+
+                ApplyLogin();
+            })
+            .catch(error =>
+            {
+                console.log(error);
+                throw new Error(error);
+            });        
+    }
 }
 
 const localStorage = window.localStorage;
 
-function GetTokenFromLocalStorage() {
-    return localStorage.getItem('token');
+const TokenStorageKey = 'token';
+const RefreshTokenStorageKey = 'refreshtoken';
+
+function GetTokenFromLocalStorage(storageKey = TokenStorageKey) {
+    let ret = localStorage.getItem(storageKey);
+    
+    if (ret === 'undefined')
+    {
+        ret = null;   
+    }
+
+    return ret;
 }
 
-function SetTokenToLocalStorage(token) {
-    return localStorage.setItem('token', token);
+function SetTokenToLocalStorage(token, storageKey = TokenStorageKey) {
+    return localStorage.setItem(storageKey, token);
 }
 
-function RemoveTokenFromLocalStorage() {
-    return localStorage.removeItem('token');
+function RemoveTokenFromLocalStorage(storageKey = TokenStorageKey) {
+    return localStorage.removeItem(storageKey);
 }
+
+let Constants = 
+{
+    TokenStorageKey,
+    RefreshTokenStorageKey
+};
 
 let authenticationService = {
     GetValidUserFromToken,
     LoginWithGoogleAsync,
     GetTokenFromLocalStorage,
     SetTokenToLocalStorage,
-    RemoveTokenFromLocalStorage
+    RemoveTokenFromLocalStorage,
+    RefreshLoginAsync,
+    ApplyLogin,
+    Constants
 };
 
 export default authenticationService;

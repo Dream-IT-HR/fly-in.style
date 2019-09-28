@@ -1,7 +1,7 @@
 import api from './_api';
 
 async function GetValuesAsync(options) {
-    return await api.FetchAsync('api/values', options)
+    return await api.GetAsync('api/values', options)
         .then(values => {
             return values;
         })
