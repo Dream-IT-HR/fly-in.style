@@ -78,15 +78,15 @@ async function FetchAsync(url, options) {
             let message = r.statusText;
 
             if (r.status === unauthorized) {
-                await authenticationService.RefreshLoginAsync();
-                
-                let authOptions = GetOptionsWithAuthorizationHeader();
-                let optionsMerged = {...options, ...authOptions };
+                message = "Unauthorized";
 
-                r = await fetch(url, optionsMerged);
-                
-                if (!r.ok) {
-                    message = "Unauthorized";
+                if (options.callrefreshToken !== false) {
+                    await authenticationService.RefreshLoginAsync();
+                    
+                    let authOptions = GetOptionsWithAuthorizationHeader();
+                    let optionsMerged = {...options, ...authOptions };
+
+                    r = await fetch(url, optionsMerged);
                 }
             }
             else if (r.status === notFound) {

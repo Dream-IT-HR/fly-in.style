@@ -77,7 +77,7 @@ async function RefreshLoginAsync() {
         const options = {
             mode: 'cors',
             cache: 'default',
-            body: ''
+            callrefreshToken: false
         };
 
         let authOptions = GetOptionsWithRefreshTokenAuthorizationHeader(refreshToken);
