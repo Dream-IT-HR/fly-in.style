@@ -1,14 +1,16 @@
 // import React, {Component} from 'react'
-import React from 'react'
+import React, {useGlobal} from 'reactn';
 import {Route, Redirect, withRouter} from 'react-router-dom';
 // import {connect} from 'react-redux';
 
-const showRoute = (isAuthenticated, userRoles, routeRoles) => {
+const showRoute = (userRoles, routeRoles) => {
     let showRoute = false;
-    if (!isAuthenticated) {
+    let publicRoute = !(routeRoles !== null && routeRoles.length > 0);
+
+    if (!publicRoute) {
         if (userRoles && routeRoles) {
-            const difference = userRoles.filter(e => !routeRoles.includes(e));
-            showRoute = difference.length === 0
+            const difference = routeRoles.filter(e => !userRoles.includes(e));
+            showRoute = (difference.length !== routeRoles.length);
         }
     } else {
         showRoute = true;
@@ -16,23 +18,28 @@ const showRoute = (isAuthenticated, userRoles, routeRoles) => {
     return showRoute;
 };
 
-const PrivateRoute = ({component: Component, ...rest}) => (
-    <Route
-        {...rest}
-        render={props =>
-            showRoute(rest.isAuthenticated, rest.user.roles, rest.roles) ? (
-                <Component {...props} />
-            ) : (
-                <Redirect
-                    to={{
-                        pathname: '/',
-                        state: {from: props.location}
-                    }}
-                />
-            )
-        }
-    />
-);
+const PrivateRoute = ({component: Component, ...rest}) => {
+    const [login, ] = useGlobal('login');
+
+    return (
+        <Route
+            {...rest}
+            render={props =>
+                showRoute(login.roles, rest.roles) ? (
+                    <Redirect
+                        to={{
+                            pathname: '/',
+                            state: {from: props.location}
+                        }}
+                    />
+                ) : (
+                    <Component {...props} />
+                )
+            }
+        />
+    );
+}
+
 
 /*const mapStateToProps = (state) => {
     return {

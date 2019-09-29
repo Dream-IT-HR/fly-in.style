@@ -14,16 +14,19 @@ const routes = [
     {
         path: '/',
         exact: true,
+        roles: ['admin', 'guest'],
         component: () => <HomepageRoot/>
     },
     {
         path: '/about-us',
         exact: true,
+        roles: ['admin', 'guest'],
         component: () => <About/>
     },
     {
         path: '/login',
         exact: true,
+        restricted: true,
         component: () => <Login/>
     },
     {

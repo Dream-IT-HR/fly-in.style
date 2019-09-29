@@ -1,7 +1,7 @@
 import PrivateRoute from './_routes/PrivateRoute'
 import routes from './_routes/routes';
 import React, {Component} from 'react';
-import {Route} from 'react-router-dom';
+//import {Route} from 'react-router-dom';
 
 class AppRouter extends Component {
     render() {
@@ -9,20 +9,22 @@ class AppRouter extends Component {
             <div>
             {
                 routes.map((route, index) => (
-                    route.private ?
+                    // route.private ?
                         <PrivateRoute
                             key={index}
                             path={route.path}
                             exact={route.exact}
                             roles={route.roles}
                             component={route.component}
-                        /> :
-                        <Route
-                            key={index}
-                            path={route.path}
-                            exact={route.exact}
-                            component={route.component}
-                        />
+                        /> 
+                        // :
+                        // <Route
+                        //     key={index}
+                        //     path={route.path}
+                        //     exact={route.exact}
+                        //     claim={route.claim}
+                        //     component={route.component}
+                        // />
                 ))
             }
             </div>
