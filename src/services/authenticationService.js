@@ -1,4 +1,4 @@
-import {setGlobal} from 'reactn';
+import {setGlobal, getGlobal} from 'reactn';
 import api from './_api';
 import config from '../config.json';
 var jwtDecode = require('jwt-decode');
@@ -37,6 +37,30 @@ function ApplyLogin()
         },
     });
     
+}
+function IsLoggedIn()
+{
+    let ret = false;
+
+    let login = getGlobal().login;
+
+    // TODO: and expire time to login object and check it
+    if (login.username) {
+        ret = true;
+    }
+
+    return ret;
+}
+
+function IsClaimAuthorized(claim) {
+    let ret = false;
+
+    //let login = getGlobal().login;
+
+    // check login claims
+    ret = true;
+
+    return ret;
 }
 
 async function LoginWithGoogleAsync(options) {
@@ -137,6 +161,8 @@ let authenticationService = {
     RemoveTokenFromLocalStorage,
     RefreshLoginAsync,
     ApplyLogin,
+    IsLoggedIn,
+    IsClaimAuthorized,
     Constants
 };
 

@@ -14,20 +14,20 @@ const routes = [
     {
         path: '/',
         exact: true,
-        roles: ['admin', 'guest'],
+        claim: 'homepage.show',
         component: () => <HomepageRoot/>
-    },
-    {
-        path: '/about-us',
-        exact: true,
-        roles: ['admin', 'guest'],
-        component: () => <About/>
     },
     {
         path: '/login',
         exact: true,
         restricted: true,
         component: () => <Login/>
+    }/*,
+    {
+        path: '/about-us',
+        exact: true,
+        claim: 'about-us.show',
+        component: () => <About/>
     },
     {
         path: '/403',
@@ -44,7 +44,7 @@ const routes = [
     {
         path: '/link-error',
         component: () => <ErrorLink />
-    }
+    }*/
 ];
 
 export default routes;

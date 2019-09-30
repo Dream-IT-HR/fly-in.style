@@ -1,33 +1,42 @@
-import PrivateRoute from './_routes/PrivateRoute'
-import routes from './_routes/routes';
 import React, {Component} from 'react';
-//import {Route} from 'react-router-dom';
+import {Switch} from 'react-router-dom';
+import PublicRoute from './_routes/PublicRoute';
+import PrivateRoute from './_routes/PrivateRoute'
+
+import HomepageRoot from './screens/homepage-screen/HomepageScreen-root';
+import Login from './screens/login-screen/LoginScreen';
+import About from './screens/about-screen/AboutScreen';
 
 class AppRouter extends Component {
     render() {
         return (
-            <div>
-            {
+            <Switch>
+                <PrivateRoute component={HomepageRoot} path="/" exact />
+                <PublicRoute restricted={false} component={About} path="/about-us" exact />
+                <PublicRoute restricted={true} component={Login} path="/login" exact />
+            </Switch>
+            //<div>
+            /* {
                 routes.map((route, index) => (
-                    // route.private ?
+                    (route.claim && route.claim !== undefined && route.claim !== null && route.claim.length > 0) ?
                         <PrivateRoute
                             key={index}
                             path={route.path}
-                            exact={route.exact}
-                            roles={route.roles}
+                            // exact={route.exact}
+                            // roles={route.roles}
+                            route={route}
                             component={route.component}
                         /> 
-                        // :
-                        // <Route
-                        //     key={index}
-                        //     path={route.path}
-                        //     exact={route.exact}
-                        //     claim={route.claim}
-                        //     component={route.component}
-                        // />
+                        :
+                        <Route
+                            key={index}
+                            path={route.path}
+                            route={route}
+                            component={route.component}
+                        />
                 ))
-            }
-            </div>
+            } */
+            //</div>
         )
     }
 }

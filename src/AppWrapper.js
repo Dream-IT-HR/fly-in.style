@@ -1,3 +1,4 @@
+import {Switch} from 'react-router-dom';
 import AppRouter from './AppRouter';
 import React, {setGlobal} from 'reactn';
 import {withRouter} from 'react-router-dom';
@@ -16,8 +17,9 @@ const AppWrapper = () => {
          <div className="app-wrapper">
             <button className="button-default" onClick={toggle}>Show Modal</button>
             <button className="button-default" onClick={toggle3}>Show Modal 3</button>
-    
-             <AppRouter/>
+            <Switch>
+                <AppRouter/>
+            </Switch>
              <Modal
                  isShowing={isShowing2}
                  hide={toggle}

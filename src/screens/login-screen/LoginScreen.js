@@ -8,8 +8,27 @@ import config from '../../config.json';
 // const Button = lazy(() => import('../../_shared components/Button/Button'));
 
 class FLogin extends PureComponent {    
+  constructor(props) {
+    super(props);
+    
+    this.state = {
+      callerLocation: this.props.location.state.from,
+      redirectToCaller: false
+    };
+  }
+
+  async handleGoogleResponseAsync (response) {
+    await googleService.handleGoogleResponseAsync(response);
+    // set state na redirect callerLocation
+    // this.setState({
+    //   redirectToCaller: true
+    // })
+  }
+
   render() {
-        return (
+      let callerLocation = this.state.callerLocation;
+
+      return (
             <div className="container">
                 {/* <Button variant={ButtonVariants.primary} size={ButtonSizes.large}>Login</Button>
                 <Button variant={ButtonVariants.primary} size={ButtonSizes.large}>Google</Button> */}
@@ -51,8 +70,9 @@ class FLogin extends PureComponent {
                     <GoogleLogin
                         clientId={config.GOOGLE_CLIENT_ID}
                         buttonText="Google Login"
-                        onSuccess={googleService.handleGoogleResponseAsync}
+                        onSuccess={this.handleGoogleResponseAsync}
                         onFailure={googleService.handleGoogleResponseAsync}
+                        redirectUri={this.props.location.state.from.pathname}
                     />
                 </div>
             </div>
