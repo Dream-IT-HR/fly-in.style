@@ -14,12 +14,20 @@ function GetValidUserFromToken(token) {
         var decodedToken = jwtDecode(token);
 
         var dateNow = new Date();
+
         if (decodedToken.exp > dateNow.getTime() / 1000)
         {
             ret = {
                 username: decodedToken["Username"],
                 nickname: decodedToken["Nickname"],
-                roles: decodedToken["Userroles"]
+                claims: decodedToken["Claims"],
+                expires: decodedToken["Expires"],
+                expired: false
+            };
+        }
+        else {
+            ret = {
+                expired: true
             };
         }
     }
@@ -29,24 +37,35 @@ function GetValidUserFromToken(token) {
 
 function ApplyLogin()
 {
+    let userLogin = authenticationService.GetValidUserFromToken(authenticationService.GetTokenFromLocalStorage());
+
     setGlobal({
         login: {
-          username: authenticationService.GetValidUserFromToken(authenticationService.GetTokenFromLocalStorage()).username,
-          nickname: authenticationService.GetValidUserFromToken(authenticationService.GetTokenFromLocalStorage()).nickname,
-          roles: authenticationService.GetValidUserFromToken(authenticationService.GetTokenFromLocalStorage()).roles
+          username: userLogin.username,
+          nickname: userLogin.nickname,
+          claims: userLogin.claims,
+          expired: userLogin.expired,
+          expires: userLogin.expires
         },
     });
-    
 }
-function IsLoggedIn()
+
+async function IsLoggedInAsync()
 {
     let ret = false;
 
     let login = getGlobal().login;
-
-    // TODO: and expire time to login object and check it
+    
     if (login.username) {
         ret = true;
+    } else if(login.expired) {
+        await RefreshLoginAsync();
+
+        login = getGlobal().login;
+        
+        if (login.username) {
+            ret = true;
+        }
     }
 
     return ret;
@@ -55,7 +74,7 @@ function IsLoggedIn()
 function IsClaimAuthorized(claim) {
     let ret = false;
 
-    //let login = getGlobal().login;
+    let global = getGlobal();
 
     // check login claims
     ret = true;
@@ -161,7 +180,7 @@ let authenticationService = {
     RemoveTokenFromLocalStorage,
     RefreshLoginAsync,
     ApplyLogin,
-    IsLoggedIn,
+    IsLoggedInAsync,
     IsClaimAuthorized,
     Constants
 };

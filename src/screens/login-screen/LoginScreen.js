@@ -1,4 +1,5 @@
 import React from 'reactn';
+import { Redirect } from 'react-router-dom';
 import googleService from '../../services/googleService';
 import { PureComponent } from 'reactn';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
@@ -17,18 +18,20 @@ class FLogin extends PureComponent {
     };
   }
 
-  async handleGoogleResponseAsync (response) {
+  handleGoogleResponseAsync = async (response) => {
     await googleService.handleGoogleResponseAsync(response);
-    // set state na redirect callerLocation
-    // this.setState({
-    //   redirectToCaller: true
-    // })
+    
+    this.setState({
+       redirectToCaller: true
+    })
   }
 
   render() {
       let callerLocation = this.state.callerLocation;
 
       return (
+            (!this.state.redirectToCaller ?
+              
             <div className="container">
                 {/* <Button variant={ButtonVariants.primary} size={ButtonSizes.large}>Login</Button>
                 <Button variant={ButtonVariants.primary} size={ButtonSizes.large}>Google</Button> */}
@@ -76,6 +79,12 @@ class FLogin extends PureComponent {
                     />
                 </div>
             </div>
+            :
+            <Redirect to={
+              {
+                  pathname: callerLocation.pathname
+              }} />
+            )
         );
     }
 }

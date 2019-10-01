@@ -1,16 +1,19 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import authenticationService from '../services/authenticationService';
+import useApiCall from '../_custom hooks/useApiCall';
 
 const PrivateRoute = ({component: Component, ...rest}) => {
-    return (
+    const [error, loading, data] = useApiCall(authenticationService.IsLoggedInAsync, {}, 0);
+    let isLoggedIn = (data ? data : false);
 
-        // Show the component only when the user is logged in
-        // Otherwise, redirect the user to /login page
+    return (
         <Route {...rest} render={props => (
-            authenticationService.IsLoggedIn() && authenticationService.ClaimIsAuthorized(props.claim) ?
+            isLoggedIn && authenticationService.IsClaimAuthorized(props.claim) 
+            ?
                 <Component {...props} />
-            : <Redirect to={
+            :
+            <Redirect to={
                 {
                     pathname: '/login',
                     state: { from: props.location }
