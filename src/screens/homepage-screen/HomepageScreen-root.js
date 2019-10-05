@@ -5,14 +5,14 @@ import React, { useState } from 'react';
 
 //const Header = lazy(() => import('../header/Header'));
 // import Header from '../header/Header';
-import useApiCall from '../../_custom hooks/useApiCall';
+import useEffectAsync from '../../_custom hooks/useEffectAsync';
 import valuesService from '../../services/valuesService';
 
 const opt = {name: 'pero'};
 
 function FHomepageRoot() {
     const [options, setSearchTerm] = useState(opt);
-    const [error, loading, data] = useApiCall(valuesService.GetValuesAsync, options, 500);
+    const [error, loading, data] = useEffectAsync(valuesService.GetValuesAsync, options, 500);
     
     if (error) return <div> {error.message} </div>;
     if (loading) return <div>...loading</div>

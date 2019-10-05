@@ -1,15 +1,14 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import authenticationService from '../services/authenticationService';
-import useApiCall from '../_custom hooks/useApiCall';
 
 const PrivateRoute = ({component: Component, ...rest}) => {
-    const [error, loading, data] = useApiCall(authenticationService.IsLoggedInAsync, {}, 0);
-    let isLoggedIn = (data ? data : false);
-
+    let userIsLoggedIn  = authenticationService.IsLoggedIn();
+    let isClaimAuthorized = authenticationService.IsClaimAuthorized(rest.claim);
+    
     return (
         <Route {...rest} render={props => (
-            isLoggedIn && authenticationService.IsClaimAuthorized(props.claim) 
+            userIsLoggedIn && isClaimAuthorized
             ?
                 <Component {...props} />
             :
@@ -18,7 +17,7 @@ const PrivateRoute = ({component: Component, ...rest}) => {
                     pathname: '/login',
                     state: { from: props.location }
                 }} />
-        )} />
+        )} />    
     );
 };
 

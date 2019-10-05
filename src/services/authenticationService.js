@@ -15,20 +15,17 @@ function GetValidUserFromToken(token) {
 
         var dateNow = new Date();
 
-        if (decodedToken.exp > dateNow.getTime() / 1000)
+        ret = {
+            username: decodedToken["Username"],
+            nickname: decodedToken["Nickname"],
+            claims: decodedToken["Claims"],
+            expires: decodedToken["Expires"],
+            expired: false
+        };
+
+        if (!decodedToken.exp > dateNow.getTime() / 1000)
         {
-            ret = {
-                username: decodedToken["Username"],
-                nickname: decodedToken["Nickname"],
-                claims: decodedToken["Claims"],
-                expires: decodedToken["Expires"],
-                expired: false
-            };
-        }
-        else {
-            ret = {
-                expired: true
-            };
+            ret.expired = true;
         }
     }
         
@@ -50,35 +47,32 @@ function ApplyLogin()
     });
 }
 
-async function IsLoggedInAsync()
+function IsLoggedIn()
 {
     let ret = false;
+
+    ApplyLogin();
 
     let login = getGlobal().login;
     
     if (login.username) {
         ret = true;
-    } else if(login.expired) {
-        await RefreshLoginAsync();
 
-        login = getGlobal().login;
-        
-        if (login.username) {
-            ret = true;
-        }
     }
 
     return ret;
 }
 
 function IsClaimAuthorized(claim) {
-    let ret = false;
+    let ret = true;
 
-    let global = getGlobal();
+    if (claim) {
+        let global = getGlobal();
 
-    // check login claims
-    ret = true;
-
+        // check login claims
+        ret = true;
+    }
+    
     return ret;
 }
 
@@ -133,17 +127,21 @@ async function RefreshLoginAsync() {
                 SetTokenToLocalStorage(login.refreshToken, authenticationService.Constants.RefreshTokenStorageKey);
 
                 ApplyLogin();
+                
+                return true;
             })
             .catch(error =>
             {
                 console.log(error);
                 throw new Error(error);
-            });        
+            }); 
+    }
+    else {
+        return false;
     }
 }
 
 const localStorage = window.localStorage;
-
 const TokenStorageKey = 'token';
 const RefreshTokenStorageKey = 'refreshtoken';
 
@@ -180,7 +178,7 @@ let authenticationService = {
     RemoveTokenFromLocalStorage,
     RefreshLoginAsync,
     ApplyLogin,
-    IsLoggedInAsync,
+    IsLoggedIn,
     IsClaimAuthorized,
     Constants
 };

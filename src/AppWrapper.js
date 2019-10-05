@@ -1,3 +1,4 @@
+import GlobalErrorBoundary from './_shared components/GlobalErrorBoundary'
 import {Switch} from 'react-router-dom';
 import AppRouter from './AppRouter';
 import React, {setGlobal} from 'reactn';
@@ -14,21 +15,23 @@ const AppWrapper = () => {
     const [isShowing3, toggle3] = useModal();
     
     return (
-         <div className="app-wrapper">
-            <button className="button-default" onClick={toggle}>Show Modal</button>
-            <button className="button-default" onClick={toggle3}>Show Modal 3</button>
-            <Switch>
-                <AppRouter/>
-            </Switch>
-             <Modal
-                 isShowing={isShowing2}
-                 hide={toggle}
-             />
-             <Modal
-                 isShowing={isShowing3}
-                 hide={toggle3}
-             />
-         </div>
+         <GlobalErrorBoundary>
+            <div className="app-wrapper">
+                <button className="button-default" onClick={toggle}>Show Modal</button>
+                <button className="button-default" onClick={toggle3}>Show Modal 3</button>
+                <Switch>
+                    <AppRouter/>
+                </Switch>
+                <Modal
+                    isShowing={isShowing2}
+                    hide={toggle}
+                />
+                <Modal
+                    isShowing={isShowing3}
+                    hide={toggle3}
+                />
+            </div>
+         </GlobalErrorBoundary>
     );
   };
 

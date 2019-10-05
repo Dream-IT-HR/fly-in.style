@@ -11,7 +11,7 @@ class AppRouter extends Component {
     render() {
         return (
             <Switch>
-                <PrivateRoute component={HomepageRoot} path="/" exact />
+                <PrivateRoute component={HomepageRoot} claim="homepage" path="/" exact />
                 <PublicRoute restricted={false} component={About} path="/about-us" exact />
                 <PublicRoute restricted={true} component={Login} path="/login" exact />
             </Switch>

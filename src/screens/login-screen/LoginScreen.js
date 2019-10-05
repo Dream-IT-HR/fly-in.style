@@ -1,21 +1,40 @@
-import React from 'reactn';
+import React, {getGlobal} from 'reactn';
+import { PureComponent } from 'reactn';
 import { Redirect } from 'react-router-dom';
 import googleService from '../../services/googleService';
-import { PureComponent } from 'reactn';
+
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { GoogleLogin } from 'react-google-login';
+import authenticationService from '../../services/authenticationService';
+
 import config from '../../config.json';
 
 // const Button = lazy(() => import('../../_shared components/Button/Button'));
 
-class FLogin extends PureComponent {    
+class FLogin extends PureComponent {
   constructor(props) {
     super(props);
     
     this.state = {
       callerLocation: this.props.location.state.from,
-      redirectToCaller: false
+      redirectToCaller: false,
+      tokenRefreshed: false,
+      loading: true
     };
+  }
+  
+  componentDidMount() {
+    const refreshToken = async () => {
+      let tokenRefreshed = await authenticationService.RefreshLoginAsync();
+      this.setState(
+        {
+          tokenRefreshed,
+          loading:false
+        }
+      )
+    };
+
+    refreshToken();  
   }
 
   handleGoogleResponseAsync = async (response) => {
@@ -27,11 +46,12 @@ class FLogin extends PureComponent {
   }
 
   render() {
-      let callerLocation = this.state.callerLocation;
+      let {callerLocation, redirectToCaller, tokenRefreshed, loading} = this.state;
 
       return (
-            (!this.state.redirectToCaller ?
-              
+        (loading ? <div>...loading...</div> :
+        (!redirectToCaller && !tokenRefreshed ?
+                
             <div className="container">
                 {/* <Button variant={ButtonVariants.primary} size={ButtonSizes.large}>Login</Button>
                 <Button variant={ButtonVariants.primary} size={ButtonSizes.large}>Google</Button> */}
@@ -74,7 +94,7 @@ class FLogin extends PureComponent {
                         clientId={config.GOOGLE_CLIENT_ID}
                         buttonText="Google Login"
                         onSuccess={this.handleGoogleResponseAsync}
-                        onFailure={googleService.handleGoogleResponseAsync}
+                        onFailure={this.handleGoogleResponseAsync}
                         redirectUri={this.props.location.state.from.pathname}
                     />
                 </div>
@@ -85,7 +105,7 @@ class FLogin extends PureComponent {
                   pathname: callerLocation.pathname
               }} />
             )
-        );
+        ));
     }
 }
 
