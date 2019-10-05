@@ -5,7 +5,7 @@ import useEffectAsync from '../_custom hooks/useEffectAsync';
 
 const PublicRoute = ({component: Component, restricted, ...rest}) => {
     let userIsLoggedIn  = authenticationService.IsLoggedIn();
-
+    
     return (
         
         // restricted = false meaning public route

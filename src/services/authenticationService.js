@@ -57,11 +57,37 @@ function IsLoggedIn()
     
     if (login.username) {
         ret = true;
-
     }
 
     return ret;
 }
+
+async function IsLoggedInAsync()
+{
+    let ret = false;
+
+    ApplyLogin();
+
+    let login = getGlobal().login;
+    
+    if (login.username) {
+        ret = true;
+    } 
+    else if(login.expired || GetTokenFromLocalStorage(Constants.RefreshTokenStorageKey)) {
+        let loginRefreshed = await RefreshLoginAsync();
+        
+        if (loginRefreshed) {
+            login = getGlobal().login;
+        
+            if (login.username) {
+                ret = true;
+            } 
+        }
+    }
+
+    return ret;
+}
+
 
 function IsClaimAuthorized(claim) {
     let ret = true;
@@ -179,6 +205,7 @@ let authenticationService = {
     RefreshLoginAsync,
     ApplyLogin,
     IsLoggedIn,
+    IsLoggedInAsync,
     IsClaimAuthorized,
     Constants
 };

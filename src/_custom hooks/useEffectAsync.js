@@ -24,7 +24,6 @@ const useEffectAsyncDebounced = (apiFunction, debouncedOptions, debounceMiliseco
 
     const runEffect = (async () => {
       setLoading(true);
-      //loading = true;
 
       try {
         let response = await apiFunction(debouncedOptions);
@@ -34,15 +33,12 @@ const useEffectAsyncDebounced = (apiFunction, debouncedOptions, debounceMiliseco
         }
 
         setData(response);
-        //data = response;
 
       } catch (e) {
         setError(e);
-        //error = e;
       }
       
       setLoading(false);
-      //loading = false;
     });
     
     runEffect();

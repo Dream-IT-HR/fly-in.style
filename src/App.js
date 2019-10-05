@@ -9,7 +9,7 @@ function App() {
       <div>
         <BrowserRouter>
           {/* <Suspense fallback={<div>Loading...</div>}> */}
-          <Suspense fallback={<div>Loading...</div>}> 
+          <Suspense fallback={<div>Loading from suspense...</div>}> 
             <AppWrapper/>
           </Suspense>
         </BrowserRouter>
