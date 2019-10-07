@@ -18,7 +18,8 @@ function fButton(props)  {
         {
             handleClick = () => { props.onClick(); };
         }
-
+        
+        // TODO - handle disabled look
         return (
             <button
                 id={(id ? id: "")}

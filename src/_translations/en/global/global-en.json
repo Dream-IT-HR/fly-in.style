@@ -1,4 +1,5 @@
 {
   "greeting": "Hello %(name)s! How are you today?",
-  "productName": "Flyin"
+  "productName": "Flyin",
+  "signupButton": "Register"
 }

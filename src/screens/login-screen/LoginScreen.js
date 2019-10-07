@@ -6,8 +6,15 @@ import googleService from '../../services/googleService';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { GoogleLogin } from 'react-google-login';
 import authenticationService from '../../services/authenticationService';
-
 import config from '../../config.json';
+import SignUp from './SignUp';
+
+import Button from '../../_shared components/Button/Button';
+import ButtonSizes from '../../_shared components/Button/ButtonSizes';
+import ButtonVariants from '../../_shared components/Button/ButtonVariants';
+
+import Translate from 'react-translate-component';
+import Modal from '../../_shared components/Modal';
 
 // const Button = lazy(() => import('../../_shared components/Button/Button'));
 
@@ -16,10 +23,11 @@ class FLogin extends PureComponent {
     super(props);
     
     this.state = {
-      callerLocation: this.props.location.state.from,
+      callerLocation: this.props.location.state && this.props.location.state.from,
       redirectToCaller: false,
       tokenRefreshed: false,
-      loading: true
+      loading: true,
+      isSignUpModalOpened: false
     };
   }
   
@@ -45,10 +53,25 @@ class FLogin extends PureComponent {
     })
   }
 
+  toggleSignUpModal = () => {
+    this.setState({
+      isSignUpModalOpened: !this.state.isSignUpModalOpened
+   })
+  }
+
   render() {
-      let {callerLocation, redirectToCaller, tokenRefreshed, loading} = this.state;
+      let {callerLocation, redirectToCaller, tokenRefreshed, loading, isSignUpModalOpened} = this.state;
 
       return (
+        (isSignUpModalOpened ? 
+        <div>
+          <Modal 
+            isShowing={isSignUpModalOpened}
+            hide={this.toggleSignUpModal}>
+            <SignUp/>
+          </Modal>
+          
+        </div> :
         (loading ? <div>...loading...</div> :
         (!redirectToCaller && !tokenRefreshed ?
                 
@@ -88,24 +111,31 @@ class FLogin extends PureComponent {
                   </Form>
                 )}
               </Formik>
-
-                <div>
-                    <GoogleLogin
-                        clientId={config.GOOGLE_CLIENT_ID}
-                        buttonText="Google Login"
-                        onSuccess={this.handleGoogleResponseAsync}
-                        onFailure={this.handleGoogleResponseAsync}
-                        redirectUri={this.props.location.state.from.pathname}
-                    />
-                </div>
+              <div>
+                  <GoogleLogin
+                      clientId={config.GOOGLE_CLIENT_ID}
+                      buttonText="Google Login"
+                      onSuccess={this.handleGoogleResponseAsync}
+                      onFailure={this.handleGoogleResponseAsync}
+                      redirectUri={callerLocation && callerLocation.pathname}
+                  />
+              </div>
+              <div>
+                <Button className="signup" variant={ButtonVariants.primary} size={ButtonSizes.small} onClick={this.toggleSignUpModal}>
+                  <Translate content="signUp.signupButton" />
+                </Button>
+              </div>
             </div>
             :
-            <Redirect to={
-              {
-                  pathname: callerLocation.pathname
-              }} />
+            ( callerLocation ?
+                <Redirect to={
+                  {
+                      pathname: callerLocation.pathname
+                  }} />
+                  : <div/>
+              )
             )
-        ));
+        )));
     }
 }
 

@@ -7,13 +7,14 @@ import React, { useState } from 'react';
 // import Header from '../header/Header';
 import useEffectAsync from '../../_custom hooks/useEffectAsync';
 import valuesService from '../../services/valuesService';
+import Header from '../header/Header';
 
 const opt = {name: 'pero'};
 
 function FHomepageRoot() {
     const [options, setSearchTerm] = useState(opt);
     const [error, loading, data] = useEffectAsync(valuesService.GetValuesAsync, options, 500);
-    
+
     if (error) return <div> {error.message} </div>;
     if (loading) return <div>...loading</div>
     
@@ -23,7 +24,6 @@ function FHomepageRoot() {
     }
 
     return (            
-    
     <div className="homepage" >
         <input
             placeholder="Test debounce get values"
@@ -45,4 +45,4 @@ function FHomepageRoot() {
 
 const HomepageRoot = React.memo(FHomepageRoot);
 
-export default HomepageRoot ;
+export default HomepageRoot;
