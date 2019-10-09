@@ -1,84 +1,123 @@
-import React from 'react';
-import { Formik, Form, Field } from 'formik';
+import React, { useState } from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-
-import Translate, {translator} from 'react-translate-component';
 import Button from '../../_shared components/Button/Button';
 import ButtonSizes from '../../_shared components/Button/ButtonSizes';
 import ButtonVariants from '../../_shared components/Button/ButtonVariants';
-
+import ValidationErrorMessage from '../../_shared components/Formik/ValidationErrorMessage';
+import ValidationErrorMessageTypes from '../../_shared components/Formik/ValidationErrorMessageTypes';
 import CheckBox from '../../_shared components/Formik/CheckBox';
-
-const handleSubmit = (values, { setSubmitting }) => {
-    console.log(values);
-    setTimeout(() => {
-  
-      alert(JSON.stringify(values, null, 2));
-  
-      setSubmitting(false);
-  
-  }, 1000);
-  
-}
+import useEffectAsync from '../../_custom hooks/useEffectAsync';
+import valuesService from '../../services/valuesService';
+import usersService from '../../services/usersService';
 
 const SignupSchema = Yup.object().shape({
     lastName: Yup.string()
-      .min(2, 'Too Short!')
-      .max(150, 'Too Long!')
-      .required('Required'),
+      .min(2, ValidationErrorMessageTypes.ToShort)
+      .max(150, ValidationErrorMessageTypes.ToLong)
+      .required(ValidationErrorMessageTypes.Required),
     firstName: Yup.string()
-      .min(2, 'Too Short!')
-      .max(150, 'Too Long!')
-      .required('Required'),
-    // isBusinessOwner: Yup.bool()
-    //   .required('Required'),
+        .min(2, ValidationErrorMessageTypes.ToShort)
+        .max(150, ValidationErrorMessageTypes.ToLong)
+        .required(ValidationErrorMessageTypes.Required),
     email: Yup.string()
-      .email('Invalid email')
-      .required('Required'),
+      .email(ValidationErrorMessageTypes.InvalidEmail)
+      .required(ValidationErrorMessageTypes.Required),
   });
 
-const SignUp = () => (
-<div>
-    <h1>Signup</h1>
-        <Formik
-        initialValues={{
-            firstName: '',
-            lastName: '',
-            email: '',
-            isBusinessOwner: true
-        }}
-        validationSchema={SignupSchema}
-        onSubmit={handleSubmit}
-        >
-        {({ errors, touched, isSubmitting }) => (
-            <Form>
-                <Field name="email" type="email" />
-                {errors.email && touched.email ? (
-                    <div>{errors.email}</div> 
-                ) : null}
 
-                <Field name="firstName" />
-                {errors.firstName && touched.firstName ? (
-                    <div>{errors.firstName}</div>
-                ) : null}
+const SignUp = () => {
+    const containsErrors = (errors) => (Object.keys(errors) && Object.keys(errors).length > 0);
+    const wasTouched = (touched) => (Object.keys(touched) && Object.keys(touched).length > 0);
+    
+    const [userData, setUserData] = useState(null);
+    const [ error, loading, data ] = useEffectAsync(usersService.RegisterAsync, userData, 0, true);
+    
+    // TODO - while loading display global spinner
+    const handleSubmitAsync = async (values, { setSubmitting }) => {
+        console.log(values);
+        setTimeout(() => {
+      
+          alert(JSON.stringify(values, null, 2));
+          setUserData(values);
                 
-                <Field name="lastName" />
-                {errors.lastName && touched.lastName ? (
-                    <div>{errors.lastName}</div>
-                ) : null}
+          setSubmitting(false);
+      
+      }, 500);
+    }
+    
+    return (
+        <div className='container' display='flex'>
+            <h1>Signup</h1>
+                <Formik
+                initialValues={{
+                    firstName: '',
+                    lastName: '',
+                    email: '',
+                    isBusinessOwner: true
+                }}
+                validationSchema={SignupSchema}
+                onSubmit={handleSubmitAsync}
+                >
+                {({ errors, touched, isSubmitting, status }) => {
+                    let isDisabled = (!wasTouched(touched) || containsErrors(errors) || isSubmitting);
 
-                <CheckBox name="isBusinessOwner" translateContent="signUp.businessOwner" />
+                    return (
+                        <Form>
+                            <Field name="email" type="email" />
+                            <ErrorMessage name="email">
+                            {
+                                (errorMessage) => <div>
+                                    {errors.email && touched.email ? (
+                                        <div><ValidationErrorMessage errorMessageType={errorMessage}/></div>
+                                    ) : null}
+                                </div>
+                            }
+                            </ErrorMessage>
 
-                {errors.isBusinessOwner && touched.isBusinessOwner ? (
-                    <div>{errors.isBusinessOwner}</div>
-                ) : null}
-            
-            <Button variant={ButtonVariants.primary} size={ButtonSizes.small} disabled={isSubmitting} type="submit">Submit</Button>
+                            <Field name="firstName"/>
+                            <ErrorMessage name="firstName">
+                            {
+                                (errorMessage) => <div>
+                                    {errors.firstName && touched.firstName ? (
+                                        <div><ValidationErrorMessage errorMessageType={errorMessage}/></div>
+                                    ) : null}
+                                </div>
+                            }
+                            </ErrorMessage>
+                            
+                            <Field name="lastName" />
+                            <ErrorMessage name="lastName">
+                            {
+                                (errorMessage) => <div>
+                                    {errors.lastName && touched.lastName ? (
+                                        <div><ValidationErrorMessage errorMessageType={errorMessage}/></div>
+                                    ) : null}
+                                </div>
+                            }
+                            </ErrorMessage>
 
-            </Form>
-        )}
-        </Formik>
-    </div>
-);
+
+                            <CheckBox name="isBusinessOwner" translateContent="signUp.businessOwner" />
+                            <ErrorMessage name="isBusinessOwner">
+                            {
+                                (errorMessage) => <div>
+                                    {errors.isBusinessOwner && touched.isBusinessOwner ? (
+                                        <div><ValidationErrorMessage errorMessageType={errorMessage}/></div>
+                                    ) : null}
+                                </div>
+                            }
+                            </ErrorMessage>
+                        
+                            <Button variant={!isDisabled ? ButtonVariants.primary : ButtonVariants.disabled} size={ButtonSizes.small} disabled={isDisabled} type="submit">Submit</Button>
+                        </Form>
+                    )
+                }
+            }
+            </Formik>
+        </div>
+    )
+};
 
 export default SignUp;
+

@@ -30,8 +30,9 @@ function fButton(props)  {
                     (size === ButtonSizes.small ? " flybutton__size--small" : "") +
                     (variant === ButtonVariants.primary ? " flybutton__variant--primary": "") +
                     (variant === ButtonVariants.dark ? " flybutton__variant--dark": "") +
-                    (variant === ButtonVariants.secondary ? " flybutton__variant--secondary": "")
-                    }
+                    (variant === ButtonVariants.secondary ? " flybutton__variant--secondary": "") + 
+                    (variant === ButtonVariants.disabled ? " flybutton__variant--disabled": "") 
+                    } 
 
                 name={name}
                 autoFocus={autoFocus}

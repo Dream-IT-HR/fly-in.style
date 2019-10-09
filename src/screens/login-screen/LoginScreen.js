@@ -15,6 +15,7 @@ import ButtonVariants from '../../_shared components/Button/ButtonVariants';
 
 import Translate from 'react-translate-component';
 import Modal from '../../_shared components/Modal';
+import LocaleSwitcher from '../../_shared components/LocaleSwitcher';
 
 // const Button = lazy(() => import('../../_shared components/Button/Button'));
 
@@ -70,7 +71,6 @@ class FLogin extends PureComponent {
             hide={this.toggleSignUpModal}>
             <SignUp/>
           </Modal>
-          
         </div> :
         (loading ? <div>...loading...</div> :
         (!redirectToCaller && !tokenRefreshed ?
@@ -124,6 +124,7 @@ class FLogin extends PureComponent {
                 <Button className="signup" variant={ButtonVariants.primary} size={ButtonSizes.small} onClick={this.toggleSignUpModal}>
                   <Translate content="signUp.signupButton" />
                 </Button>
+                <LocaleSwitcher></LocaleSwitcher>
               </div>
             </div>
             :

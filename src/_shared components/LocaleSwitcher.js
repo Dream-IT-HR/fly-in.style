@@ -1,5 +1,4 @@
-import FlyButton from './extended-components/FlyButton';
-import FlyButtonToolbar from './extended-components/FlyButtonToolbar';
+import Button from './Button/Button';
 import counterpart from 'counterpart';
 import React, {Component} from 'react';
 
@@ -15,17 +14,17 @@ class LocaleSwitcher extends Component {
     render() {
       return (
         <div>
-          <FlyButtonToolbar>
-            <FlyButton variant='primary' onClick={(e) => this.handleButtonClick(e)}>Primary button</FlyButton>
-            <FlyButton variant="secondary">Secondary</FlyButton>
-            <FlyButton variant="success">Success</FlyButton>
-            <FlyButton variant="warning">Warning</FlyButton>
-            <FlyButton variant="danger">Danger</FlyButton>
-            <FlyButton variant="info">Info</FlyButton>
-            <FlyButton variant="light">Light</FlyButton>
-            <FlyButton variant="dark">Dark</FlyButton>
-            <FlyButton variant="link">Link</FlyButton>
-          </FlyButtonToolbar>
+          <div>
+            <Button variant='primary' onClick={(e) => this.handleButtonClick(e)}>Primary button</Button>
+            <Button variant="secondary">Secondary</Button>
+            <Button variant="success">Success</Button>
+            <Button variant="warning">Warning</Button>
+            <Button variant="danger">Danger</Button>
+            <Button variant="info">Info</Button>
+            <Button variant="light">Light</Button>
+            <Button variant="dark">Dark</Button>
+            <Button variant="link">Link</Button>
+          </div>
           <p>
             <span>Switch Locale:</span>
             <select defaultValue={counterpart.getLocale()} onChange={this.handleChange}>

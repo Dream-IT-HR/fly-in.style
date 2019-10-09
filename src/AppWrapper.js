@@ -28,7 +28,7 @@ const AppWrapper = () => {
                     <AppRouter/>
                 </Switch>
                 <Modal isShowing={isShowing2} hide={toggle}>
-                      <SignUp/>
+                    <SignUp/>
                 </Modal>
                 <Modal
                     isShowing={isShowing3}

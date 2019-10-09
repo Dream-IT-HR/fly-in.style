@@ -4,6 +4,7 @@ import Translate from 'react-translate-component';
 
 const FCheckbox  = (props) => {
     let {translateContent} = props;
+    
     return (
         <div className="flycheckbox">
             <div>
