@@ -93,7 +93,7 @@ function IsClaimAuthorized(claim) {
     let ret = true;
 
     if (claim) {
-        let global = getGlobal();
+        // let global = getGlobal();
 
         // check login claims
         ret = true;

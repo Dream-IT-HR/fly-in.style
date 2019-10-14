@@ -1,8 +1,7 @@
 import React, {lazy} from 'react';
-import ButtonVariants from '../../_shared components/Button/ButtonVariants';
-import ButtonSizes from '../../_shared components/Button/ButtonSizes';
+import {ButtonVariants, ButtonSizes} from '../../_shared/components/Button/Button-component';
 
-const Button = lazy(() => import('../../_shared components/Button/Button'));
+const Button = lazy(() => import('../../_shared/components/Button/Button-component'));
 
 function fAbout() {    
         return (

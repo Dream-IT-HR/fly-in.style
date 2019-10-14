@@ -6,6 +6,7 @@ import PrivateRoute from './_routes/PrivateRoute'
 import HomepageRoot from './screens/homepage-screen/HomepageScreen-root';
 import Login from './screens/login-screen/LoginScreen';
 import About from './screens/about-screen/AboutScreen';
+import Demo from './screens/demo-screen/Demo-component';
 
 class AppRouter extends Component {
     render() {
@@ -14,6 +15,7 @@ class AppRouter extends Component {
                 <PrivateRoute component={HomepageRoot} claim="homepage" path="/" exact />
                 <PublicRoute restricted={false} component={About} path="/about-us" exact />
                 <PublicRoute restricted={true} component={Login} path="/login" exact />
+                <PublicRoute restricted={false} component={Demo} path="/demo" exact />
             </Switch>
             //<div>
             /* {

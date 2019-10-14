@@ -61,7 +61,7 @@ const useEffectAsyncDebounced = (apiFunction, debouncedOptions, debounceMiliseco
     return () => {
       cancel = true;
     }
-  }, [apiFunction, debouncedOptions, debounceMiliseconds]
+  }, [apiFunction, debouncedOptions, debounceMiliseconds, skipOnMount]
   );
 
   return [ error, loading, data ];

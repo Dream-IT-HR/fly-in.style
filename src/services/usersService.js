@@ -1,7 +1,4 @@
-import {setGlobal, getGlobal} from 'reactn';
 import api from './_api';
-import config from '../config.json';
-var jwtDecode = require('jwt-decode');
 
 const Constants = {
     URLS: {

@@ -5,9 +5,9 @@ import React, { useState } from 'react';
 
 //const Header = lazy(() => import('../header/Header'));
 // import Header from '../header/Header';
-import useEffectAsync from '../../_custom hooks/useEffectAsync';
+import useEffectAsync from '../../_shared/hooks/useEffectAsync';
 import valuesService from '../../services/valuesService';
-import Header from '../header/Header';
+// import Header from '../header/Header';
 
 const opt = {name: 'pero'};
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import breakpoints from '../_helpers/breakpoints';
-import useWindowWidth from '../_custom hooks/useWindowWidth';
+import useWindowWidth from '../_shared/hooks/useWindowWidth';
 
 const ResponsiveImage = (props) => {
     const imageUrl = useWindowWidth() > breakpoints.mobileLandscape ? props.desktopImage : props.mobileImage;

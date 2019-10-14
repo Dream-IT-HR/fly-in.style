@@ -1,13 +1,13 @@
-import GlobalErrorBoundary from './_shared components/GlobalErrorBoundary'
+import GlobalErrorBoundary from './_shared/components/GlobalErrorBoundary'
 import {Switch} from 'react-router-dom';
 import AppRouter from './AppRouter';
-import React, {setGlobal} from 'reactn';
+import React from 'reactn';
 import {withRouter} from 'react-router-dom';
 import '../src/_translations/translations';
 import authenticationService from '../src/services/authenticationService';
-import Modal from "./_shared components/Modal";
-import useModal from './_custom hooks/useModal';
-import Header from './screens/header/Header';
+import Modal from "./_shared/components/Modal";
+import useModal from './_shared/hooks/useModal';
+// import Header from './screens/header/Header';
 import SignUp from './screens/login-screen/SignUp';
 
 authenticationService.ApplyLogin();

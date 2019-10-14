@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import Button from '../../_shared components/Button/Button';
-import ButtonSizes from '../../_shared components/Button/ButtonSizes';
-import ButtonVariants from '../../_shared components/Button/ButtonVariants';
-import ValidationErrorMessage from '../../_shared components/Formik/ValidationErrorMessage';
-import ValidationErrorMessageTypes from '../../_shared components/Formik/ValidationErrorMessageTypes';
-import CheckBox from '../../_shared components/Formik/CheckBox';
-import useEffectAsync from '../../_custom hooks/useEffectAsync';
-import valuesService from '../../services/valuesService';
+import Button, {ButtonVariants, ButtonSizes}  from '../../_shared/components/Button/Button-component';
+import ValidationErrorMessage from '../../_shared/components/Formik/ValidationErrorMessage';
+import ValidationErrorMessageTypes from '../../_shared/components/Formik/ValidationErrorMessageTypes';
+import CheckBox from '../../_shared/components/Formik/CheckBox';
+import useEffectAsync from '../../_shared/hooks/useEffectAsync';
 import usersService from '../../services/usersService';
 
 const SignupSchema = Yup.object().shape({
@@ -31,7 +28,8 @@ const SignUp = () => {
     const wasTouched = (touched) => (Object.keys(touched) && Object.keys(touched).length > 0);
     
     const [userData, setUserData] = useState(null);
-    const [ error, loading, data ] = useEffectAsync(usersService.RegisterAsync, userData, 0, true);
+    // const [ error, loading, data ] = useEffectAsync(usersService.RegisterAsync, userData, 0, true);
+    const [,,] = useEffectAsync(usersService.RegisterAsync, userData, 0, true);
     
     // TODO - while loading display global spinner
     const handleSubmitAsync = async (values, { setSubmitting }) => {
@@ -96,7 +94,6 @@ const SignUp = () => {
                                 </div>
                             }
                             </ErrorMessage>
-
 
                             <CheckBox name="isBusinessOwner" translateContent="signUp.businessOwner" />
                             <ErrorMessage name="isBusinessOwner">

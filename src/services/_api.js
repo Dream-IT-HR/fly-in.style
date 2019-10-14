@@ -42,7 +42,7 @@ async function PostBodyAsync(url, body) {
     };
 
     let authOptions = GetOptionsWithAuthorizationHeader();
-    let options = {...options, ...authOptions, ...opt };
+    let options = {...authOptions, ...opt };
 
     return FetchAsync(url, options)
 }

@@ -1,4 +1,4 @@
-import Button from './Button/Button';
+import Button from './Button/Button-component';
 import counterpart from 'counterpart';
 import React, {Component} from 'react';
 

@@ -1,4 +1,4 @@
-import React, {getGlobal} from 'reactn';
+import React from 'reactn';
 import { PureComponent } from 'reactn';
 import { Redirect } from 'react-router-dom';
 import googleService from '../../services/googleService';
@@ -9,13 +9,11 @@ import authenticationService from '../../services/authenticationService';
 import config from '../../config.json';
 import SignUp from './SignUp';
 
-import Button from '../../_shared components/Button/Button';
-import ButtonSizes from '../../_shared components/Button/ButtonSizes';
-import ButtonVariants from '../../_shared components/Button/ButtonVariants';
+import Button, {ButtonVariants, ButtonSizes}  from '../../_shared/components/Button/Button-component';
 
 import Translate from 'react-translate-component';
-import Modal from '../../_shared components/Modal';
-import LocaleSwitcher from '../../_shared components/LocaleSwitcher';
+import Modal from '../../_shared/components/Modal';
+import LocaleSwitcher from '../../_shared/components/LocaleSwitcher';
 
 // const Button = lazy(() => import('../../_shared components/Button/Button'));
 
