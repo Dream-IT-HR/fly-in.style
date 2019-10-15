@@ -1,6 +1,7 @@
 @import '_styles/_shared/variables.scss';
 @import '_styles/homepage-screen/homepage.scss';
 @import '_shared/components/Button/Button-styles.scss';
+@import '_shared/components/TextBox/TextBox-styles.scss';
 
 @import '_styles/_shared/responsiveImage.scss';
 @import '_styles/header/header.scss';
@@ -9,3 +10,8 @@
 @import './_styles/nav-icon/nav-icon.scss';
 
 @import './screens/demo-screen/Demo-styles.scss';
+@import './screens/demo-screen/ButtonsDemo/ButtonsDemo-styles.scss';
+@import './screens/demo-screen/LocaleSwitcherDemo/LocaleSwitcherDemo-styles.scss';
+@import './screens/demo-screen/ModalDemo/ModalDemo-styles.scss';
+@import './screens/demo-screen/FormDemo/FormDemo-styles.scss';
+@import './screens/demo-screen/FormDemo/DataEntry-styles.scss';

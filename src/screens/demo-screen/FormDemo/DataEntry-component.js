@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import Button, {ButtonVariants, ButtonSizes}  from '../../_shared/components/Button/Button-component';
-import ValidationErrorMessage, {ValidationErrorMessageTypes} from '../../_shared/components/Formik/ValidationErrorMessage';
-import CheckBox from '../../_shared/components/Formik/CheckBox';
-import useEffectAsync from '../../_shared/hooks/useEffectAsync';
-import usersService from '../../services/usersService';
+import Button, {ButtonVariants, ButtonSizes}  from '../../../_shared/components/Button/Button-component';
+import ValidationErrorMessage, {ValidationErrorMessageTypes} from '../../../_shared/components/Formik/ValidationErrorMessage';
+import CheckBox from '../../../_shared/components/Formik/CheckBox';
+import FormikTextBox from '../../../_shared/components/Formik/FormikTextBox';
 
-const SignupSchema = Yup.object().shape({
+const DataEntrySchema = Yup.object().shape({
+    testName: Yup.string()
+      .min(2, ValidationErrorMessageTypes.ToShort)
+      .max(150, ValidationErrorMessageTypes.ToLong)
+      .required(ValidationErrorMessageTypes.Required),
     lastName: Yup.string()
       .min(2, ValidationErrorMessageTypes.ToShort)
       .max(150, ValidationErrorMessageTypes.ToLong)
@@ -22,13 +25,13 @@ const SignupSchema = Yup.object().shape({
   });
 
 
-const SignUp = () => {
+const DataEntry = () => {
     const containsErrors = (errors) => (Object.keys(errors) && Object.keys(errors).length > 0);
     const wasTouched = (touched) => (Object.keys(touched) && Object.keys(touched).length > 0);
     
     const [userData, setUserData] = useState(null);
     // const [ error, loading, data ] = useEffectAsync(usersService.RegisterAsync, userData, 0, true);
-    const [,,] = useEffectAsync(usersService.RegisterAsync, userData, 0, true);
+    // const [,,] = useEffectAsync(usersService.RegisterAsync, userData, 0, true);
     
     // TODO - while loading display global spinner
     const handleSubmitAsync = async (values, { setSubmitting }) => {
@@ -44,16 +47,18 @@ const SignUp = () => {
     }
     
     return (
+        <div className='flydemo flydemo-form flydemo-form-dataentry'>
         <div className='container' display='flex'>
-            <h1>Signup</h1>
+            <h1>DataEntry</h1>
                 <Formik
                 initialValues={{
+                    testName: '',
                     firstName: '',
                     lastName: '',
                     email: '',
                     isBusinessOwner: true
                 }}
-                validationSchema={SignupSchema}
+                validationSchema={DataEntrySchema}
                 onSubmit={handleSubmitAsync}
                 >
                 {({ errors, touched, isSubmitting, status }) => {
@@ -61,6 +66,7 @@ const SignUp = () => {
 
                     return (
                         <Form>
+                            <Field name="testName" component={FormikTextBox} />
                             <Field name="email" type="email" />
                             <ErrorMessage name="email">
                             {
@@ -94,7 +100,7 @@ const SignUp = () => {
                             }
                             </ErrorMessage>
 
-                            <CheckBox name="isBusinessOwner" translateContent="signUp.businessOwner" />
+                            <CheckBox name="isBusinessOwner" translateContent="DataEntry.businessOwner" />
                             <ErrorMessage name="isBusinessOwner">
                             {
                                 (errorMessage) => <div>
@@ -112,8 +118,9 @@ const SignUp = () => {
             }
             </Formik>
         </div>
+        </div>
     )
 };
 
-export default SignUp;
+export default DataEntry;
 

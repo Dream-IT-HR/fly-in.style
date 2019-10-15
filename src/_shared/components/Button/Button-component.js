@@ -61,6 +61,6 @@ const Button = React.memo(fButton);
 export default Button;
 
 Button.propTypes = {
-    variant: PropTypes.oneOf([ButtonVariants.disabled, ButtonVariants.secondary, ButtonVariants.primary]).isRequired,
-    size: PropTypes.oneOf([ButtonSizes.large, ButtonSizes.normal, ButtonSizes.small]).isRequired,
+    variant: PropTypes.oneOf(Object.keys(ButtonVariants)).isRequired,
+    size: PropTypes.oneOf(Object.keys(ButtonSizes)).isRequired,
 };

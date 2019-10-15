@@ -7,7 +7,7 @@ const handleButtonClick = (e) => {
 
 const FButtons = (props) => {
     return (
-        <div className="demo-buttons">
+        <div className="flydemo-buttons">
             <Button variant={ButtonVariants.primary} size={ButtonSizes.normal} onClick={(e) => handleButtonClick(e)}>Primary</Button>
             <Button variant={ButtonVariants.secondary} size={ButtonSizes.large}>Secondary</Button>
             <Button variant={ButtonVariants.disabled} size={ButtonSizes.small} >Disabled</Button>
@@ -16,6 +16,6 @@ const FButtons = (props) => {
     );
 }
 
-const Buttons = React.memo(FButtons);
+const ButtonsDemo = React.memo(FButtons);
 
-export default Buttons;
+export default ButtonsDemo;

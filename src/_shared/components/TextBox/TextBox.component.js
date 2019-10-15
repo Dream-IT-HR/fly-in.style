@@ -1,8 +1,8 @@
 import React from 'react';
 
-const FTextBox = (props) => {
+const FTextBox = () => {
     return (
-        <div>
+        <div className="flytextbox">
             <input type="text" />
         </div>
     );

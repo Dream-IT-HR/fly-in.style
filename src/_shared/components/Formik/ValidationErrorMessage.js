@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ValidationErrorMessageTypes from './ValidationErrorMessageTypes';
 import Translate from 'react-translate-component';
 
 const ValidationErrorMessage = (props) => 
@@ -29,6 +28,13 @@ const ValidationErrorMessage = (props) =>
     )
 };
 
+export const ValidationErrorMessageTypes = 
+{
+    ToShort : 'ToShort',
+    ToLong : 'ToLong',
+    Required : 'Required',
+    InvalidEmail : 'InvalidEmail'
+};
 
 export default ValidationErrorMessage;
 
