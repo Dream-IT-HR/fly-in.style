@@ -3,7 +3,7 @@ const Buttons = lazy(() => import('./Buttons/Buttons-component'));
 
 const FDemo = () => {
     return (
-        <div className="demo">
+        <div className="flydemo">
             <Buttons/>
         </div>
     );

@@ -1,8 +1,11 @@
 @import '_styles/_shared/variables.scss';
 @import '_styles/homepage-screen/homepage.scss';
-@import '_styles/_shared/flybutton.scss';
+@import '_shared/components/Button/Button-styles.scss';
+
 @import '_styles/_shared/responsiveImage.scss';
 @import '_styles/header/header.scss';
 @import './_styles/fonts';
 @import './_styles/_shared/global.scss';
 @import './_styles/nav-icon/nav-icon.scss';
+
+@import './screens/demo-screen/Demo-styles.scss';
