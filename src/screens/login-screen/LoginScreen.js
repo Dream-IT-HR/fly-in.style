@@ -13,7 +13,7 @@ import Button, {ButtonVariants, ButtonSizes}  from '../../_shared/components/But
 
 import Translate from 'react-translate-component';
 import Modal from '../../_shared/components/Modal';
-import LocaleSwitcher from '../../_shared/components/LocaleSwitcher';
+import LocaleSwitcher from '../../_shared/components/LocaleSwitcher/LocaleSwitcher-component';
 
 // const Button = lazy(() => import('../../_shared components/Button/Button'));
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import LocaleSwitcher from '../../../_shared/components/LocaleSwitcher';
+import LocaleSwitcher from '../../../_shared/components/LocaleSwitcher/LocaleSwitcher-component';
 
 const FLocaleSwitcher = (props) => {
     return (
