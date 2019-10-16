@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formik, Field } from 'formik';
+import ValidationErrorMessage from '../Formik/ValidationErrorMessage';
 import TextBox from '../TextBox/TextBox.component';
 
 const FormikTextBox = ({
@@ -9,9 +9,11 @@ const FormikTextBox = ({
   }) => (
     <div>
         <TextBox {...field} {...props}/>
-      {/* <input type="text" {...field} {...props} /> */}
-      {touched[field.name] &&
-        errors[field.name] && <div className="error">{errors[field.name]}</div>}
+        {touched[field.name] &&
+        errors[field.name] && 
+        //<div className="error">{errors[field.name]}</div>
+        <div><ValidationErrorMessage errorMessageType={errors[field.name]}/></div>
+        }
     </div>
   );
 
