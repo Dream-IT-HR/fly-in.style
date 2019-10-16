@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import counterpart from 'counterpart'
+import useLocale from '../../hooks/useLocale';
 
 const useTranslationDefault = true;
+
 export function createDropDownListItem(value, translateLabel, useTranslation = useTranslationDefault) {
     return {
         value,
@@ -13,7 +15,9 @@ export function createDropDownListItem(value, translateLabel, useTranslation = u
 
 function FDropDownList(props) {
     let {name, items} = props;
-
+    
+    useLocale();
+  
     let dropDownItems = items.map(function(item){
         let translatedLabel = item.translateLabel;
 
@@ -27,15 +31,16 @@ function FDropDownList(props) {
             </option>
         );
     })
+    
     return (
-    <div className="flydropdownlist">
-        <select name={name}>
-            {
-                dropDownItems
-            }
-        </select>
-    </div>
-  );
+        <div className="flydropdownlist">
+            <select name={name}>
+                {
+                    dropDownItems
+                }
+            </select>
+        </div>
+    );
 }
 
 const DropDownList = React.memo(FDropDownList);
