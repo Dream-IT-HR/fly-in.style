@@ -3,25 +3,27 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import Button, {ButtonVariants, ButtonSizes}  from '../../../_shared/components/Button/Button-component';
 import {ValidationErrorMessageTypes} from '../../../_shared/components/Formik/ValidationErrorMessage';
-import CheckBox from '../../../_shared/components/Formik/CheckBox';
 import FormikTextBox from '../../../_shared/components/Formik/FormikTextBox';
+import CheckBoxFormikField from '../../../_shared/components/CheckBoxFormikField/CheckBoxFormikField-component';
 
 const DataEntrySchema = Yup.object().shape({
     testName: Yup.string()
-      .min(2, ValidationErrorMessageTypes.ToShort)
-      .max(150, ValidationErrorMessageTypes.ToLong)
-      .required(ValidationErrorMessageTypes.Required),
+        .min(2, ValidationErrorMessageTypes.ToShort)
+        .max(150, ValidationErrorMessageTypes.ToLong)
+        .required(ValidationErrorMessageTypes.Required),
     lastName: Yup.string()
-      .min(2, ValidationErrorMessageTypes.ToShort)
-      .max(150, ValidationErrorMessageTypes.ToLong)
-      .required(ValidationErrorMessageTypes.Required),
+        .min(2, ValidationErrorMessageTypes.ToShort)
+        .max(150, ValidationErrorMessageTypes.ToLong)
+        .required(ValidationErrorMessageTypes.Required),
     firstName: Yup.string()
         .min(2, ValidationErrorMessageTypes.ToShort)
         .max(150, ValidationErrorMessageTypes.ToLong)
         .required(ValidationErrorMessageTypes.Required),
     email: Yup.string()
-      .email(ValidationErrorMessageTypes.InvalidEmail)
-      .required(ValidationErrorMessageTypes.Required),
+        .email(ValidationErrorMessageTypes.InvalidEmail)
+        .required(ValidationErrorMessageTypes.Required),
+    isBusinessOwner: Yup.bool()
+        .required(ValidationErrorMessageTypes.Required)
   });
 
 
@@ -56,21 +58,21 @@ const DataEntry = () => {
                     firstName: '',
                     lastName: '',
                     email: '',
-                    isBusinessOwner: true
+                    isBusinessOwner: undefined
                 }}
                 validationSchema={DataEntrySchema}
                 onSubmit={handleSubmitAsync}
                 >
-                {({ errors, touched, isSubmitting, status }) => {
+                {({ errors, touched, isSubmitting, status, values }) => {
                     let isDisabled = (!wasTouched(touched) || containsErrors(errors) || isSubmitting);
 
                     return (
                         <Form>
-                            <Field name="email" type="email" placeHolder="email" component={FormikTextBox} />
+                            <Field name="email" type="email" placeholder="email" component={FormikTextBox} />
                             <Field name="testName" component={FormikTextBox} />
                             <Field name="firstName" component={FormikTextBox} />
                             <Field name="lastName" component={FormikTextBox} />
-                            
+                            <CheckBoxFormikField touched={touched} errors={errors} name="isBusinessOwner" checked={values.isBusinessOwner} translateLabel="demo.text1" label="ne prevodi"/>
                             {/*                             
                             <Field name="email" type="email" />
                             <ErrorMessage name="email">

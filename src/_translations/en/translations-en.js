@@ -1,4 +1,8 @@
 const translations = {
+    demo:
+    {
+        text1: "Hello, this is text 1"
+    },
     global: 
     {
         greeting: "Hi %(name)s!, how are you?",

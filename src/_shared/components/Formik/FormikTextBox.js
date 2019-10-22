@@ -9,10 +9,10 @@ const FormikTextBox = ({
   }) => (
     <div>
         <TextBox {...field} {...props}/>
-        {touched[field.name] &&
-        errors[field.name] && 
-        //<div className="error">{errors[field.name]}</div>
-        <div><ValidationErrorMessage errorMessageType={errors[field.name]}/></div>
+        {
+          touched[field.name] &&
+          errors[field.name] && 
+          <div><ValidationErrorMessage errorMessageType={errors[field.name]}/></div>
         }
     </div>
   );
