@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const FTextBox = (props, field) => {
+// translateLabel, label - iskoristiti za placeholder koji odleti gore lijevo * ana
+
+const TextBox = (props, field, translateLabel, label) => {
     let {type} = props;
     
     if (type === undefined) {
-        type = 'text';
+        type = InputTypes.text;
     }
 
     return (
@@ -14,8 +16,6 @@ const FTextBox = (props, field) => {
         </div>
     );
 }
-
-const TextBox = React.memo(FTextBox);
 
 export const InputTypes = {
     text: 'text',

@@ -1,8 +1,7 @@
 const translations = {
     demo:
     {
-        primaryButton:"Primary Button",
-        checkboxLabel:"this is a checkbox"
+        text1: "Hello, this is text 1"
     },
     global: 
     {
