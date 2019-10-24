@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import Button, {ButtonVariants, ButtonSizes}  from '../../../_shared/components/Button/Button-component';
+
 import {ValidationErrorMessageTypes} from '../../../_shared/components/Formik/ValidationErrorMessage';
-import CheckBox from '../../../_shared/components/Formik/CheckBox';
 import FormikTextBox from '../../../_shared/components/Formik/FormikTextBox';
+import FormikCheckBox from '../../../_shared/components/Formik/FormikCheckBox';
 
 const DataEntrySchema = Yup.object().shape({
     testName: Yup.string()
@@ -66,56 +67,12 @@ const DataEntry = () => {
 
                     return (
                         <Form>
-                            <Field name="email" type="email" placeHolder="email" component={FormikTextBox} />
+                            <Field name="email" type="email" placeholder="email" component={FormikTextBox} />
                             <Field name="testName" component={FormikTextBox} />
                             <Field name="firstName" component={FormikTextBox} />
                             <Field name="lastName" component={FormikTextBox} />
-                            
-                            {/*                             
-                            <Field name="email" type="email" />
-                            <ErrorMessage name="email">
-                            {
-                                (errorMessage) => <div>
-                                    {errors.email && touched.email ? (
-                                        <div><ValidationErrorMessage errorMessageType={errorMessage}/></div>
-                                    ) : null}
-                                </div>
-                            }
-                            </ErrorMessage>
-
-                            <Field name="firstName"/>
-                            <ErrorMessage name="firstName">
-                            {
-                                (errorMessage) => <div>
-                                    {errors.firstName && touched.firstName ? (
-                                        <div><ValidationErrorMessage errorMessageType={errorMessage}/></div>
-                                    ) : null}
-                                </div>
-                            }
-                            </ErrorMessage>
-                            
-                            <Field name="lastName" />
-                            <ErrorMessage name="lastName">
-                            {
-                                (errorMessage) => <div>
-                                    {errors.lastName && touched.lastName ? (
-                                        <div><ValidationErrorMessage errorMessageType={errorMessage}/></div>
-                                    ) : null}
-                                </div>
-                            }
-                            </ErrorMessage>
-
-                            <CheckBox name="isBusinessOwner" translateContent="DataEntry.businessOwner" />
-                            <ErrorMessage name="isBusinessOwner">
-                            {
-                                (errorMessage) => <div>
-                                    {errors.isBusinessOwner && touched.isBusinessOwner ? (
-                                        <div><ValidationErrorMessage errorMessageType={errorMessage}/></div>
-                                    ) : null}
-                                </div>
-                            }
-                            </ErrorMessage>
-                         */}
+                            <Field name="isBusinessOwner" component={FormikCheckBox} label="čeks" translateLabel="demo.checkboxLabel" />
+                         
                             <Button variant={!isDisabled ? ButtonVariants.primary : ButtonVariants.disabled} size={ButtonSizes.small} disabled={isDisabled} type="submit">Submit</Button>
                         </Form>
                     )

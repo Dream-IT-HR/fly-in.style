@@ -1,5 +1,6 @@
 import React from 'react';
 import Button, {ButtonVariants, ButtonSizes} from '../../../_shared/components/Button/Button-component';
+import Translate from 'react-translate-component';
 
 const handleButtonClick = (e) => {
     alert('button clicked');
@@ -8,7 +9,7 @@ const handleButtonClick = (e) => {
 const FButtons = (props) => {
     return (
         <div className="flydemo-buttons">
-            <Button variant={ButtonVariants.primary} size={ButtonSizes.normal} onClick={(e) => handleButtonClick(e)}>Primary</Button>
+            <Button variant={ButtonVariants.primary} size={ButtonSizes.normal} onClick={(e) => handleButtonClick(e)}><Translate content="demo.primaryButton"/></Button>
             <Button variant={ButtonVariants.secondary} size={ButtonSizes.large}>Secondary</Button>
             <Button variant={ButtonVariants.disabled} size={ButtonSizes.small} >Disabled</Button>
             <Button variant={ButtonVariants.dark} size={ButtonSizes.normal}>Dark</Button>

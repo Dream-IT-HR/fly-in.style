@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import Button, {ButtonVariants, ButtonSizes}  from '../../_shared/components/Button/Button-component';
 import ValidationErrorMessage, {ValidationErrorMessageTypes} from '../../_shared/components/Formik/ValidationErrorMessage';
-import CheckBox from '../../_shared/components/Formik/CheckBox';
+import FormikCheckBox from '../../_shared/components/Formik/FormikCheckBox';
 import useEffectAsync from '../../_shared/hooks/useEffectAsync';
 import usersService from '../../services/usersService';
 
@@ -94,7 +94,7 @@ const SignUp = () => {
                             }
                             </ErrorMessage>
 
-                            <CheckBox name="isBusinessOwner" translateContent="signUp.businessOwner" />
+                            <FormikCheckBox name="isBusinessOwner" translateLabel="signUp.businessOwner" />
                             <ErrorMessage name="isBusinessOwner">
                             {
                                 (errorMessage) => <div>

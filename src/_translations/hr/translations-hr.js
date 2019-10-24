@@ -1,4 +1,9 @@
 const translations = {
+    demo:
+    {
+        primaryButton:"Primarni gumb",
+        checkboxLabel:"ovo je checkbox"
+    },
     global: 
     {
         greeting: "Bok %(name)s %(lastname)s, kako si?",

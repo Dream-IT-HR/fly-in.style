@@ -1,4 +1,9 @@
 const translations = {
+    demo:
+    {
+        primaryButton:"Primary Button",
+        checkboxLabel:"this is a checkbox"
+    },
     global: 
     {
         greeting: "Hi %(name)s!, how are you?",

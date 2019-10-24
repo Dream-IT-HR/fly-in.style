@@ -1,14 +1,14 @@
 import React from 'react';
 import ValidationErrorMessage from '../Formik/ValidationErrorMessage';
-import TextBox from '../TextBox/TextBox-component';
+import CheckBox from '../CheckBox/CheckBox-component';
 
-const FormikTextBox = ({
+const FormikCheckBox = ({
     field, // { name, value, onChange, onBlur }
     form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
     ...props
   }) => (
     <div className="formik">
-        <TextBox {...field} {...props}/>
+        <CheckBox {...field} {...props}/>
         {touched[field.name] &&
         errors[field.name] && 
         //<div className="error">{errors[field.name]}</div>
@@ -17,4 +17,4 @@ const FormikTextBox = ({
     </div>
   );
 
-export default FormikTextBox;
+export default FormikCheckBox;
