@@ -7,7 +7,7 @@ const FormikTextBox = ({
     form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
     ...props
   }) => (
-    <div>
+    <div className="formik">
         <TextBox {...field} {...props}/>
         {
           touched[field.name] &&
