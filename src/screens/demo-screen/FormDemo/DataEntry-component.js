@@ -5,6 +5,7 @@ import Button, {ButtonVariants, ButtonSizes}  from '../../../_shared/components/
 import {ValidationErrorMessageTypes} from '../../../_shared/components/Formik/ValidationErrorMessage';
 import FormikTextBox from '../../../_shared/components/Formik/FormikTextBox';
 import CheckBoxFormikField from '../../../_shared/components/CheckBoxFormikField/CheckBoxFormikField-component';
+import TextBoxFormikField from '../../../_shared/components/TextBoxFormikField/TextBoxFormikField-component';
 
 const DataEntrySchema = Yup.object().shape({
     testName: Yup.string()
@@ -68,7 +69,8 @@ const DataEntry = () => {
 
                     return (
                         <Form>
-                            <Field name="email" type="email" placeholder="email" component={FormikTextBox} />
+                            <TextBoxFormikField touched={touched} errors={errors} name="email" type="email" translateLabel="demo.text1"/>
+                            {/* <Field name="email" type="email" placeholder="email" component={FormikTextBox} /> */}
                             <Field name="testName" component={FormikTextBox} />
                             <Field name="firstName" component={FormikTextBox} />
                             <Field name="lastName" component={FormikTextBox} />

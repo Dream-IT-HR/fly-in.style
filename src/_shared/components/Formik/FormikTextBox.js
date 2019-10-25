@@ -1,6 +1,6 @@
 import React from 'react';
 import ValidationErrorMessage from '../Formik/ValidationErrorMessage';
-import TextBox from '../TextBox/TextBox.component';
+import TextBox from '../TextBox/TextBox-component';
 
 const FormikTextBox = ({
     field, // { name, value, onChange, onBlur }
