@@ -4,4 +4,10 @@
         cursor:zoom-in;
         margin:5px;
     }
+
+    &__formvalid {
+        border-bottom-color: green;
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+    }
 }

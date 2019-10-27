@@ -9,23 +9,24 @@ import CheckBoxFormikField from '../../../_shared/components/CheckBoxFormikField
 import TextBoxFormikField from '../../../_shared/components/TextBoxFormikField/TextBoxFormikField-component';
 
 const DataEntrySchema = Yup.object().shape({
-    testName: Yup.string()
-        .min(2, ValidationErrorMessageTypes.ToShort)
-        .max(150, ValidationErrorMessageTypes.ToLong)
-        .required(ValidationErrorMessageTypes.Required),
-    lastName: Yup.string()
-        .min(2, ValidationErrorMessageTypes.ToShort)
-        .max(150, ValidationErrorMessageTypes.ToLong)
-        .required(ValidationErrorMessageTypes.Required),
-    firstName: Yup.string()
-        .min(2, ValidationErrorMessageTypes.ToShort)
-        .max(150, ValidationErrorMessageTypes.ToLong)
-        .required(ValidationErrorMessageTypes.Required),
     email: Yup.string()
         .email(ValidationErrorMessageTypes.InvalidEmail)
         .required(ValidationErrorMessageTypes.Required),
-    isBusinessOwner: Yup.bool()
-        .required(ValidationErrorMessageTypes.Required)
+    // testName: Yup.string()
+    //     .min(2, ValidationErrorMessageTypes.ToShort)
+    //     .max(150, ValidationErrorMessageTypes.ToLong)
+    //     .required(ValidationErrorMessageTypes.Required),
+    // lastName: Yup.string()
+    //     .min(2, ValidationErrorMessageTypes.ToShort)
+    //     .max(150, ValidationErrorMessageTypes.ToLong)
+    //     .required(ValidationErrorMessageTypes.Required),
+    // firstName: Yup.string()
+    //     .min(2, ValidationErrorMessageTypes.ToShort)
+    //     .max(150, ValidationErrorMessageTypes.ToLong)
+    //     .required(ValidationErrorMessageTypes.Required),
+    
+    // isBusinessOwner: Yup.bool()
+    //     .required(ValidationErrorMessageTypes.Required)
   });
 
 
@@ -70,15 +71,11 @@ const DataEntry = () => {
 
                     return (
                         <Form>
-                            <TextBoxFormikField touched={touched} errors={errors} name="email" type="email" translateLabel="demo.text1"/>
-                            {/* <Field name="email" type="email" placeholder="email" component={FormikTextBox} /> */}
-                            {/* <TextBoxFormikField touched={touched} errors={errors} name="email" type="email" placeholder="email"/> */}
-                            
-                            <Field name="testName" component={FormikTextBox} />
-                            <Field name="firstName" component={FormikTextBox} />
-                            <Field name="lastName" component={FormikTextBox} />
-                            
+                            <TextBoxFormikField placeholder="email" touched={touched} errors={errors} name="email" type="email" translateLabel="demo.text1"/>
+                            <TextBoxFormikField placeholder="firstName" touched={touched} errors={errors} name="firstName" translateLabel="demo.text1"/>
+                            <TextBoxFormikField placeholder="lastName" touched={touched} errors={errors} name="lastName" translateLabel="demo.text1"/>
                             <CheckBoxFormikField touched={touched} errors={errors} name="isBusinessOwner" checked={values.isBusinessOwner} translateLabel="demo.text1" label="ne prevodi"/>
+                            
                             {/*                             
                             <Field name="email" type="email" />
                             <ErrorMessage name="email">

@@ -17,7 +17,7 @@ const FTextBoxFormikField = (props) => {
             <Field
                 name={name}
                 type={type}
-                translatelabel={translateLabel}
+                translateLabel={translateLabel}
                 label={label}
                 placeholder={placeholder}
                 component={TextBox}

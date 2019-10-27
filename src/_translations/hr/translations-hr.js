@@ -1,7 +1,8 @@
 const translations = {
     demo:
     {
-        text1: "Bok, ovo je tekst 1"
+        text1: "Bok, ovo je tekst 1",
+        primaryButton: "Osnovni gumb"
     },
     global: 
     {
