@@ -70,7 +70,8 @@ const DataEntry = () => {
 
                     return (
                         <Form>
-                            <Field name="email" type="email" placeholder="email" component={FormikTextBox} />
+                            <TextBoxFormikField touched={touched} errors={errors} name="email" type="email" translateLabel="demo.text1"/>
+                            {/* <Field name="email" type="email" placeholder="email" component={FormikTextBox} /> */}
                             {/* <TextBoxFormikField touched={touched} errors={errors} name="email" type="email" placeholder="email"/> */}
                             
                             <Field name="testName" component={FormikTextBox} />

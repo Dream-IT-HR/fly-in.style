@@ -13,7 +13,7 @@ const FTextBoxFormikField = (props) => {
     }        
 
     return (
-        <div className="flyTextbox-formikfield">
+        <div className="flytextbox-formikfield">
             <Field
                 name={name}
                 type={type}
