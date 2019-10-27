@@ -3,9 +3,10 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import Button, {ButtonVariants, ButtonSizes}  from '../../_shared/components/Button/Button-component';
 import ValidationErrorMessage, {ValidationErrorMessageTypes} from '../../_shared/components/Formik/ValidationErrorMessage';
-import FormikCheckBox from '../../_shared/components/Formik/FormikCheckBox';
 import useEffectAsync from '../../_shared/hooks/useEffectAsync';
 import usersService from '../../services/usersService';
+import TextBoxFormikField from '../../_shared/components/TextBoxFormikField/TextBoxFormikField-component';
+import CheckBoxFormikField from '../../_shared/components/CheckBoxFormikField/CheckBoxFormikField-component';
 
 const SignupSchema = Yup.object().shape({
     lastName: Yup.string()
@@ -56,7 +57,7 @@ const SignUp = () => {
                 validationSchema={SignupSchema}
                 onSubmit={handleSubmitAsync}
                 >
-                {({ errors, touched, isSubmitting, status }) => {
+                {({ errors, touched, isSubmitting, values, status }) => {
                     let isDisabled = (!wasTouched(touched) || containsErrors(errors) || isSubmitting);
 
                     return (
@@ -94,7 +95,8 @@ const SignUp = () => {
                             }
                             </ErrorMessage>
 
-                            <FormikCheckBox name="isBusinessOwner" translateLabel="signUp.businessOwner" />
+                            <CheckBoxFormikField touched={touched} errors={errors} name="isBusinessOwner" checked={values.isBusinessOwner} translateLabel="signUp.businessOwner"/>
+
                             <ErrorMessage name="isBusinessOwner">
                             {
                                 (errorMessage) => <div>

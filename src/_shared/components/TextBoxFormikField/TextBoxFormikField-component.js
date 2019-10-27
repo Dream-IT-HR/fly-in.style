@@ -1,12 +1,10 @@
 import React from 'react';
 import { Field } from 'formik';
 import ValidationErrorMessage from '../Formik/ValidationErrorMessage';
-import CheckBox from '../CheckBox/CheckBox-component';
+import TextBox from '../TextBox/TextBox-component';
 
-const FCheckBoxFormikField = (props) => {
-    let {errors, touched, name, checked, translateLabel, label} = props;
-    
-    checked = checked || false; // uncontrolled -> controlled component
+const FTextBoxFormikField = (props) => {
+    let {errors, touched, name, translateLabel, label, placeholder, type} = props;
     
     let validationErrorHtml = undefined;
     
@@ -15,20 +13,20 @@ const FCheckBoxFormikField = (props) => {
     }        
 
     return (
-        <div className="flycheckbox-formikfield">
+        <div className="flyTextbox-formikfield">
             <Field
                 name={name}
-                type="checkbox"
-                checked={checked}
-                translateLabel={translateLabel}
+                type={type}
+                translatelabel={translateLabel}
                 label={label}
-                component={CheckBox}
+                placeholder={placeholder}
+                component={TextBox}
             />
             {validationErrorHtml}          
         </div>
     );
 }
 
-const CheckBoxFormikField = React.memo(FCheckBoxFormikField);
+const TextBoxFormikField = React.memo(FTextBoxFormikField);
 
-export default CheckBoxFormikField;
+export default TextBoxFormikField;

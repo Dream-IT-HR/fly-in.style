@@ -3,7 +3,7 @@ import React from 'react';
 
 // translateLabel, label - iskoristiti za placeholder koji odleti gore lijevo * ana
 
-const TextBox = (props, field, translateLabel, label) => {
+const TextBox = (props, field) => {
     let {type} = props;
     
     if (type === undefined) {
@@ -12,6 +12,7 @@ const TextBox = (props, field, translateLabel, label) => {
 
     return (
         <div className="flytextbox">
+            {/* {translatelabel} {label} */}
             <input type={type} {...props} {...field}/>
         </div>
     );
