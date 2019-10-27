@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field } from 'formik';
-import ValidationErrorMessage from '../Formik/ValidationErrorMessage';
+import ValidationErrorMessage from '../ValidationErrorMessage/ValidationErrorMessage-component';
 import CheckBox from '../CheckBox/CheckBox-component';
 
 const FCheckBoxFormikField = (props) => {

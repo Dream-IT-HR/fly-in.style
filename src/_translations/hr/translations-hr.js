@@ -2,7 +2,10 @@ const translations = {
     demo:
     {
         text1: "Bok, ovo je tekst 1",
-        primaryButton: "Osnovni gumb"
+        primaryButton: "Osnovni gumb",
+        email: "Email adresa",
+        firstName: "Ime",
+        lastName: "Prezime"
     },
     global: 
     {

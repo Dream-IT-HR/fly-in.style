@@ -1,8 +1,15 @@
 import React from 'react';
 import { Field } from 'formik';
-import ValidationErrorMessage from '../Formik/ValidationErrorMessage';
+import ValidationErrorMessage from '../ValidationErrorMessage/ValidationErrorMessage-component';
 import TextBox from '../TextBox/TextBox-component';
 
+
+const withFormikInput = FormikComponent => props =>
+                             (<FormikComponent
+                                 {...props}
+                                 name="New Name" 
+                              />);
+                              
 const FTextBoxFormikField = (props) => {
     let {errors, touched, name, translateLabel, label, placeholder, type} = props;
     

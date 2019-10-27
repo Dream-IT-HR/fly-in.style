@@ -4,27 +4,30 @@ import Translate from 'react-translate-component';
 
 const ValidationErrorMessage = (props) => 
 {
-    let translatedMessage = null;
+    let translateContent = undefined;
 
     switch (props.errorMessageType) {
         case ValidationErrorMessageTypes.Required:
-            translatedMessage = (<Translate content='validation.required'/>);
+            translateContent = 'validation.required';
             break;
         case ValidationErrorMessageTypes.ToLong:
-            translatedMessage = (<Translate content='validation.toLong'/>);
+            translateContent = 'validation.toLong';
             break;
         case ValidationErrorMessageTypes.ToShort:
-            translatedMessage = (<Translate content='validation.toShort'/>);
+            translateContent = 'validation.toShort';
             break;
         case ValidationErrorMessageTypes.InvalidEmail:
-            translatedMessage = (<Translate content='validation.invalidEmail'/>);
+            translateContent = 'validation.invalidEmail';
             break;
         default:
-            translatedMessage = (<Translate content='validation.something'/>);
+            translateContent = 'validation.something';
             break;
     }
+
     return (
-        <div className='ValidationError'>{translatedMessage}</div>
+        <div className='validationerror'>
+            <Translate content={translateContent}/>
+        </div>
     )
 };
 

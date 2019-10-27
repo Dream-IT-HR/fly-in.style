@@ -2,7 +2,10 @@ const translations = {
     demo:
     {
         text1: "Hello, this is text 1",
-        primaryButton: "Primary button"
+        primaryButton: "Primary button",
+        email: "Email",
+        firstName: "First Name",
+        lastName: "Last Name"
     },
     global: 
     {

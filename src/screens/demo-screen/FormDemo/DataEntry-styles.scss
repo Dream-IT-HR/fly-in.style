@@ -1,5 +1,18 @@
-.flydemo-form-dataentry {
-    background-color:lightyellow;
-    width: 100%;
-    height: fit-content;
+.flydemo-form{
+    &__dataentry {
+        background-color:lightyellow;
+        width: 100%;
+        height: fit-content;
+        border-style: solid;
+        border-width: 1px;
+        border-color: gold;
+
+        &__isvalid {
+            border-color: green;
+        }
+
+        &__invalid {
+            border-color: red;
+        }
+    }
 }

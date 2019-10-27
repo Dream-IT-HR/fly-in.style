@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import Button, {ButtonVariants, ButtonSizes}  from '../../_shared/components/Button/Button-component';
-import ValidationErrorMessage, {ValidationErrorMessageTypes} from '../../_shared/components/Formik/ValidationErrorMessage';
+import ValidationErrorMessage, {ValidationErrorMessageTypes} from '../../_shared/components/ValidationErrorMessage/ValidationErrorMessage-component';
 import useEffectAsync from '../../_shared/hooks/useEffectAsync';
 import usersService from '../../services/usersService';
 import TextBoxFormikField from '../../_shared/components/TextBoxFormikField/TextBoxFormikField-component';

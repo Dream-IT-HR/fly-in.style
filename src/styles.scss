@@ -1,5 +1,7 @@
 @import '_styles/_shared/variables.scss';
 @import '_styles/homepage-screen/homepage.scss';
+
+@import '_shared/components/ValidationErrorMessage/ValidationErrorMessage-styles.scss';
 @import '_shared/components/Button/Button-styles.scss';
 @import '_shared/components/TextBox/TextBox-styles.scss';
 @import '_shared/components/CheckBox/CheckBox-styles.scss';
