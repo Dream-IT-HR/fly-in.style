@@ -1,7 +1,7 @@
 import React from 'react';
 import Translate from 'react-translate-component';
 
-const CheckBox = ({field, form, type, checked, translateLabel, label}) => {
+const CheckBox = ({field, form, type, checked, translatelabel, label}) => {
   let {isValid} = form;
 
   let className = "flycheckbox";
@@ -16,7 +16,7 @@ const CheckBox = ({field, form, type, checked, translateLabel, label}) => {
         <input {...field} type={type} checked={checked} />
       </div>
       <div className="flycheckbox-label">
-        <Translate content={translateLabel}/>
+        <Translate content={translatelabel}/>
         {label}
       </div>
     </label>

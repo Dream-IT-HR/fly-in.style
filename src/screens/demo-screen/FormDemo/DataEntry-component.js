@@ -79,7 +79,8 @@ const DataEntry = () => {
                     validationSchema={DataEntrySchema}
                     onSubmit={handleSubmitAsync}
                     >
-                    {({ errors, touched, isSubmitting, status, values, isValid }) => {
+                    {(props) => {
+                        let { errors, touched, isSubmitting, status, values, isValid } = props;
                         let isDisabled = (!wasTouched(touched) || containsErrors(errors) || isSubmitting);
                         
                         if (wasTouched(touched)) {
@@ -88,10 +89,10 @@ const DataEntry = () => {
 
                         return (
                             <Form>
-                                <TextBoxFormikField placeholder="email" touched={touched} errors={errors} name="email" type="email" translateLabel="demo.email"/>
-                                <TextBoxFormikField placeholder="firstName" touched={touched} errors={errors} name="firstName" translateLabel="demo.firstName"/>
-                                <TextBoxFormikField placeholder="lastName" touched={touched} errors={errors} name="lastName" translateLabel="demo.lastName"/>
-                                <CheckBoxFormikField touched={touched} errors={errors} name="isBusinessOwner" checked={values.isBusinessOwner} translateLabel="demo.text1" label="ne prevodi"/>
+                                <TextBoxFormikField placeholder="email" touched={touched} errors={errors} name="email" type="email" translatelabel="demo.email"/>
+                                <TextBoxFormikField placeholder="firstName" touched={touched} errors={errors} name="firstName" translatelabel="demo.firstName"/>
+                                <TextBoxFormikField placeholder="lastName" touched={touched} errors={errors} name="lastName" translatelabel="demo.lastName"/>
+                                <CheckBoxFormikField touched={touched} errors={errors} name="isBusinessOwner" checked={values.isBusinessOwner} translatelabel="demo.text1" label="ne prevodi"/>
                                 
                                 <Button variant={!isDisabled ? ButtonVariants.primary : ButtonVariants.disabled} size={ButtonSizes.small} disabled={isDisabled} type="submit">Submit</Button>
                             </Form>

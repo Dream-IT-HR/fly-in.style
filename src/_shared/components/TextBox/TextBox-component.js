@@ -2,10 +2,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Translate from 'react-translate-component';
 
-// translateLabel, label - iskoristiti za placeholder koji odleti gore lijevo 
+// TODO - move formik props to textboxFormik component
 
 const TextBox = ({field, form, ...props}) => {
-    let {type, translateLabel, label, placeholder} = props;
+    let {type, translateLabel} = props;
     let {isValid} = form;
     
     if (type === undefined) {

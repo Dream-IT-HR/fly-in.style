@@ -4,7 +4,7 @@ import ValidationErrorMessage from '../ValidationErrorMessage/ValidationErrorMes
 import CheckBox from '../CheckBox/CheckBox-component';
 
 const FCheckBoxFormikField = (props) => {
-    let {errors, touched, name, checked, translateLabel, label} = props;
+    let {errors, touched, name, checked, translatelabel, label} = props;
     
     checked = checked || false; // uncontrolled -> controlled component
     
@@ -20,7 +20,7 @@ const FCheckBoxFormikField = (props) => {
                 name={name}
                 type="checkbox"
                 checked={checked}
-                translateLabel={translateLabel}
+                translatelabel={translatelabel}
                 label={label}
                 component={CheckBox}
             />

@@ -2,16 +2,10 @@ import React from 'react';
 import { Field } from 'formik';
 import ValidationErrorMessage from '../ValidationErrorMessage/ValidationErrorMessage-component';
 import TextBox from '../TextBox/TextBox-component';
+//import withFormikValidationInput from '../_Hoc/withFormikValidationInput';
 
-
-const withFormikInput = FormikComponent => props =>
-                             (<FormikComponent
-                                 {...props}
-                                 name="New Name" 
-                              />);
-                              
-const FTextBoxFormikField = (props) => {
-    let {errors, touched, name, translateLabel, label, placeholder, type} = props;
+const withFormikValidationInput = FormikComponent => props => {
+    let {errors, touched, name} = props;
     
     let validationErrorHtml = undefined;
     
@@ -20,20 +14,33 @@ const FTextBoxFormikField = (props) => {
     }        
 
     return (
+        <>
+            <FormikComponent
+                {...props}
+            />
+            {validationErrorHtml}
+        </>
+    );
+}
+      
+                              
+const FTextBoxFormikField = (props) => {
+    let {name, translatelabel, label, placeholder, type} = props;
+    
+    return (
         <div className="flytextbox-formikfield">
             <Field
                 name={name}
                 type={type}
-                translateLabel={translateLabel}
+                translatelabel={translatelabel}
                 label={label}
                 placeholder={placeholder}
                 component={TextBox}
             />
-            {validationErrorHtml}          
         </div>
     );
 }
 
-const TextBoxFormikField = React.memo(FTextBoxFormikField);
+const TextBoxFormikField = React.memo(withFormikValidationInput(FTextBoxFormikField));
 
 export default TextBoxFormikField;
