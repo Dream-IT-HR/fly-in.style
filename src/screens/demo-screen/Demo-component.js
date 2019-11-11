@@ -1,10 +1,10 @@
 import React, {lazy} from 'reactn';
-
 const ButtonsDemo = lazy(() => import('./ButtonsDemo/ButtonsDemo-component'));
 const LocaleSwitcherDemo = lazy(() => import('./LocaleSwitcherDemo/LocaleSwitcherDemo-component'));
 const ModalDemo = lazy(() => import('./ModalDemo/ModalDemo-component'));
 const FormDemo = lazy(() => import('./FormDemo/FormDemo-component'));
 const DropDownListDemo = lazy(() => import('./DropDownListDemo/DropDownListDemo-component'));
+const SpinnerDemo = lazy(() => import('./SpinnerDemo/SpinnerDemo-component'));
 
 const FDemo = () => {
     return (
@@ -14,6 +14,7 @@ const FDemo = () => {
             <LocaleSwitcherDemo/>
             <ModalDemo/>
             <FormDemo/>
+            <SpinnerDemo/>
         </div>
     );
 }

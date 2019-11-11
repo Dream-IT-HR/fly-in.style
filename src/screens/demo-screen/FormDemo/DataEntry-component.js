@@ -43,13 +43,13 @@ const DataEntry = () => {
     const handleSubmitAsync = async (values, { setSubmitting }) => {
         console.log(values);
         setTimeout(() => {
-      
-          alert(JSON.stringify(values, null, 2));
-          setUserData(values);
-                
-          setSubmitting(false);
-      
-      }, 500);
+        
+            alert(JSON.stringify(values, null, 2));
+            setUserData(values);
+                    
+            setSubmitting(false);
+        
+        }, 500);
     }
     
     let className = "flydemo flydemo-form flydemo-form__dataentry";
