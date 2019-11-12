@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import Button, {ButtonVariants, ButtonSizes}  from '../../../_shared/components/Button/Button-component';
 import {ValidationErrorMessageTypes} from '../../../_shared/components/ValidationErrorMessage/ValidationErrorMessage-component';
@@ -11,21 +11,16 @@ const DataEntrySchema = Yup.object().shape({
     email: Yup.string()
         .email(ValidationErrorMessageTypes.InvalidEmail)
         .required(ValidationErrorMessageTypes.Required),
-    // testName: Yup.string()
-    //     .min(2, ValidationErrorMessageTypes.ToShort)
-    //     .max(150, ValidationErrorMessageTypes.ToLong)
-    //     .required(ValidationErrorMessageTypes.Required),
-    // lastName: Yup.string()
-    //     .min(2, ValidationErrorMessageTypes.ToShort)
-    //     .max(150, ValidationErrorMessageTypes.ToLong)
-    //     .required(ValidationErrorMessageTypes.Required),
-    // firstName: Yup.string()
-    //     .min(2, ValidationErrorMessageTypes.ToShort)
-    //     .max(150, ValidationErrorMessageTypes.ToLong)
-    //     .required(ValidationErrorMessageTypes.Required),
-    
-    // isBusinessOwner: Yup.bool()
-    //     .required(ValidationErrorMessageTypes.Required)
+    lastName: Yup.string()
+        .min(2, ValidationErrorMessageTypes.ToShort)
+        .max(150, ValidationErrorMessageTypes.ToLong)
+        .required(ValidationErrorMessageTypes.Required),
+    firstName: Yup.string()
+        .min(2, ValidationErrorMessageTypes.ToShort)
+        .max(150, ValidationErrorMessageTypes.ToLong)
+        .required(ValidationErrorMessageTypes.Required),
+    isBusinessOwner: Yup.bool()
+        .required(ValidationErrorMessageTypes.Required)
   });
 
 
@@ -36,9 +31,6 @@ const DataEntry = () => {
     const [userData, setUserData] = useState(null);
     const [isValid, setIsValid] = useState(null);
 
-    // const [ error, loading, data ] = useEffectAsync(usersService.RegisterAsync, userData, 0, true);
-    // const [,,] = useEffectAsync(usersService.RegisterAsync, userData, 0, true);
-    
     // TODO - while loading display global spinner
     const handleSubmitAsync = async (values, { setSubmitting }) => {
         console.log(values);
@@ -80,7 +72,8 @@ const DataEntry = () => {
                     onSubmit={handleSubmitAsync}
                     >
                     {(props) => {
-                        let { errors, touched, isSubmitting, status, values, isValid } = props;
+                        // let { errors, touched, isSubmitting, status, values, isValid } = props;
+                        let { errors, touched, isSubmitting, values, isValid } = props;
                         let isDisabled = (!wasTouched(touched) || containsErrors(errors) || isSubmitting);
                         
                         if (wasTouched(touched)) {

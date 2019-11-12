@@ -22,7 +22,7 @@ const useEffectAsyncDebounced = (apiFunction, debouncedOptions, debounceMiliseco
 
   useEffect(() => {
     let cancel = false;
-
+    
     const runEffect = (async () => {
       setLoading(true);
 
