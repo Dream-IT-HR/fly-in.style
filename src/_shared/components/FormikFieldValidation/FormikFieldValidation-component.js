@@ -1,9 +1,9 @@
 import React from 'react';
 import ValidationErrorMessage from '../ValidationErrorMessage/ValidationErrorMessage-component';
-
-const withFormikValidationInput = FormikComponent => props => {
+     
+const FormikFieldValidation = (props) => {
     let {errors, touched, name} = props;
-    
+
     let validationErrorHtml = undefined;
     
     if (touched[name] && errors[name]) {
@@ -12,12 +12,9 @@ const withFormikValidationInput = FormikComponent => props => {
 
     return (
         <>
-            <FormikComponent
-                {...props}
-            />
             {validationErrorHtml}
         </>
     );
 }
 
-export default withFormikValidationInput();
+export default FormikFieldValidation;

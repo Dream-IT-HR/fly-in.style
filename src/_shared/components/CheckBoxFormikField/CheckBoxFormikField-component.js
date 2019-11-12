@@ -1,19 +1,13 @@
 import React from 'react';
 import { Field } from 'formik';
-import ValidationErrorMessage from '../ValidationErrorMessage/ValidationErrorMessage-component';
 import CheckBox from '../CheckBox/CheckBox-component';
+import FormikFieldValidation from '../FormikFieldValidation/FormikFieldValidation-component';
 
 const FCheckBoxFormikField = (props) => {
     let {errors, touched, name, checked, translatelabel, label} = props;
     
     checked = checked || false; // uncontrolled -> controlled component
     
-    let validationErrorHtml = undefined;
-    
-    if (touched[name] && errors[name]) {
-        validationErrorHtml = <div><ValidationErrorMessage errorMessageType={errors[name]}/></div>;
-    }        
-
     return (
         <div className="flycheckbox-formikfield">
             <Field
@@ -24,7 +18,11 @@ const FCheckBoxFormikField = (props) => {
                 label={label}
                 component={CheckBox}
             />
-            {validationErrorHtml}          
+            <FormikFieldValidation
+                errors={errors}
+                touched={touched}
+                name={name}
+            />
         </div>
     );
 }

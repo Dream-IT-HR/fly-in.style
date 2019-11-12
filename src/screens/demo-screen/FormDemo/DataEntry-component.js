@@ -35,13 +35,13 @@ const DataEntry = () => {
     const handleSubmitAsync = async (values, { setSubmitting }) => {
         console.log(values);
         setTimeout(() => {
-      
-          alert(JSON.stringify(values, null, 2));
-          setUserData(values);
-                
-          setSubmitting(false);
-      
-      }, 500);
+        
+            alert(JSON.stringify(values, null, 2));
+            setUserData(values);
+                    
+            setSubmitting(false);
+        
+        }, 500);
     }
     
     let className = "flydemo flydemo-form flydemo-form__dataentry";
@@ -85,6 +85,7 @@ const DataEntry = () => {
                                 <TextBoxFormikField placeholder="email" touched={touched} errors={errors} name="email" type="email" translatelabel="demo.email"/>
                                 <TextBoxFormikField placeholder="firstName" touched={touched} errors={errors} name="firstName" translatelabel="demo.firstName"/>
                                 <TextBoxFormikField placeholder="lastName" touched={touched} errors={errors} name="lastName" translatelabel="demo.lastName"/>
+
                                 <CheckBoxFormikField touched={touched} errors={errors} name="isBusinessOwner" checked={values.isBusinessOwner} translatelabel="demo.text1" label="ne prevodi"/>
                                 
                                 <Button variant={!isDisabled ? ButtonVariants.primary : ButtonVariants.disabled} size={ButtonSizes.small} disabled={isDisabled} type="submit">Submit</Button>
