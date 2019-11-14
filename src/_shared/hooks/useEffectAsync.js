@@ -50,7 +50,7 @@ const useEffectAsyncDebounced = (apiFunction, debouncedOptions, debounceMiliseco
 
   useEffect(() => {
     let cancel = false;
-
+    
     const runEffect = (async () => {
       try {
         setLoading(true);
