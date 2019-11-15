@@ -20,9 +20,7 @@ const getfullClassName = (classname, isValid) => {
     return className;
 }
 
-const MyTextField = (props) => {
-    let { name, label, type, handleChange, handleBlur, values, touched, errors } = props;
-
+const TextField = ({ name, label, type, handleChange, handleBlur, values, touched, errors }) => {
     let isTouched = touched[name];
     let errorMessage = errors[name];
 
@@ -69,9 +67,9 @@ const DataEntry = (props) => {
     return (
         <div className={fullClassName}>
             <form onSubmit={formik.handleSubmit}>
-                <MyTextField name="firstName" type="text" label="First Name" {...formik} />
-                <MyTextField name="lastName" type="text" label="Last Name" {...formik} />
-                <MyTextField name="email" type="email" label="Email" {...formik} />
+                <TextField name="firstName" type="text" label="First Name" {...formik} />
+                <TextField name="lastName" type="text" label="Last Name" {...formik} />
+                <TextField name="email" type="email" label="Email" {...formik} />
                 
                 <button type="submit">Submit</button>
             </form>
