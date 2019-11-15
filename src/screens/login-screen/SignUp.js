@@ -5,8 +5,6 @@ import Button, {ButtonVariants, ButtonSizes}  from '../../_shared/components/But
 import ValidationErrorMessage, {ValidationErrorMessageTypes} from '../../_shared/components/ValidationErrorMessage/ValidationErrorMessage-component';
 import useEffectAsync from '../../_shared/hooks/useEffectAsync';
 import usersService from '../../services/usersService';
-import TextBoxFormikField from '../../_shared/components/TextBoxFormikField/TextBoxFormikField-component';
-import CheckBoxFormikField from '../../_shared/components/CheckBoxFormikField/CheckBoxFormikField-component';
 
 const SignupSchema = Yup.object().shape({
     lastName: Yup.string()
@@ -95,7 +93,7 @@ const SignUp = () => {
                             }
                             </ErrorMessage>
 
-                            <CheckBoxFormikField touched={touched} errors={errors} name="isBusinessOwner" checked={values.isBusinessOwner} translateLabel="signUp.businessOwner"/>
+                            {/* <CheckBoxFormikField touched={touched} errors={errors} name="isBusinessOwner" checked={values.isBusinessOwner} translateLabel="signUp.businessOwner"/> */}
 
                             <ErrorMessage name="isBusinessOwner">
                             {
