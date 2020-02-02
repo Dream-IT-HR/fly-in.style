@@ -1,10 +1,21 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+### url to check google sign in
+https://flyinline.firebaseapp.com/
+
+### url to check many code examples
+https://flyinline.firebaseapp.com/demo
+
 ## Available Scripts
 
 In the project directory, you can run:
 
 ### ($env:HTTPS = "true") -and (npm start)
+
+### `npm deploy`
+
+This deploys the app to firebase free hosting server.
+Do it regularly.
 
 ### `npm start`
 
