@@ -21,7 +21,7 @@ const onClick = (linkPath) =>
     }
 }
 
-function fButton(props)  {
+const Button = React.memo(props => {
     let {id, className, size, variant, disabled, autoFocus, name, type, linkPath} = props;
 
     let handleClick = () => { onClick(linkPath); };
@@ -54,13 +54,18 @@ function fButton(props)  {
             {props.children}
         </button>
     );
-}    
-
-const Button = React.memo(fButton);
+});
 
 export default Button;
 
 Button.propTypes = {
-    variant: PropTypes.oneOf(Object.keys(ButtonVariants)).isRequired,
+    id: PropTypes.string.isRequired,
+    className: PropTypes.string,
     size: PropTypes.oneOf(Object.keys(ButtonSizes)).isRequired,
+    variant: PropTypes.oneOf(Object.keys(ButtonVariants)).isRequired,
+    disabled: PropTypes.bool,
+    autoFocus: PropTypes.bool,
+    name: PropTypes.string,
+    type: PropTypes.string,
+    linkPath: PropTypes.string,
 };
