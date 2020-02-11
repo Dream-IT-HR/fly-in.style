@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { useFormik, useField } from 'formik';
+import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 const getfullClassName = (classname, isValid) => {
@@ -45,7 +45,7 @@ const TextField = ({ name, label, type, handleChange, handleBlur, values, touche
 };
 
 const DataEntry = (props) => {
-    let { initialValues, classname, title, validationSchema, onSubmit, renderForm } = props;
+    let { initialValues, classname, validationSchema, onSubmit } = props;
 
     const formik = useFormik({
         initialValues,

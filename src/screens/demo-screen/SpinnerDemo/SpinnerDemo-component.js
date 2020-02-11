@@ -1,17 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Modal from '../../../_shared/components/Modal';
 import Button, {ButtonVariants, ButtonSizes} from '../../../_shared/components/Button/Button-component';
 import useModal from '../../../_shared/hooks/useModal';
 
 import useEffectAsync from '../../../_shared/hooks/useEffectAsync';
-import valuesService from '../../../services/valuesService';
 
 import { css } from '@emotion/core';
 import ClipLoader from 'react-spinners/ClipLoader';
 import BeatLoader from 'react-spinners/BeatLoader';
 import {
-    CircleLoader, BarLoader, BounceLoader, ClimbingBoxLoader, DotLoader, FadeLoader, GridLoader, HashLoader, MoonLoader, PacmanLoader,
-    PropagateLoader, PulseLoader, RingLoader, RiseLoader, RotateLoader, ScaleLoader, SyncLoader} from 'react-spinners';
+    CircleLoader, BounceLoader, ClimbingBoxLoader, DotLoader, FadeLoader, GridLoader, HashLoader} from 'react-spinners';
 
  
 // Can be a string as well. Need to ensure each key-value pair ends with ;
@@ -48,8 +46,8 @@ const FSpinner = (props) => {
     const [loadingOnChangeTrigger2, setLoadingOnChangeTrigger2] = useState(loadingOnChangeTrigger2Default);
     
     const [isShowing, toggle] = useModal();
-    const [error, loading, data] = useEffectAsync(SomeCallAsync, loadingOnChangeTrigger, 0, true);
-    const [error2, loading2, data2] = useEffectAsync(SomeCall2Async, loadingOnChangeTrigger2, 0, true);
+    const [loading] = useEffectAsync(SomeCallAsync, loadingOnChangeTrigger, 0, true);
+    const [error2, loading2] = useEffectAsync(SomeCall2Async, loadingOnChangeTrigger2, 0, true);
 
     if (error2) 
     {
