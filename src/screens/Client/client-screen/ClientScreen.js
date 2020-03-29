@@ -20,7 +20,7 @@ const Client = () => {
         <div className="client">
             <Grid>
                 <Hambi onClick={handleNavigation} />
-                {navigation && <Navigation />}
+                {navigation && <Navigation closeNavigation={() => setNavigation(false)} navigation={navigation} />}
                 <GoogleMapProvider>
                     <Map />
                 </GoogleMapProvider>

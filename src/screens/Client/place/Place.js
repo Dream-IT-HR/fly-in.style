@@ -17,6 +17,12 @@ const Place = React.memo(() => {
         address,
     } = selectedLocation;
 
+    const getWaitingColor = waitingNumber => {
+        if (waitingNumber <= 2) return '#e50000';
+        if (waitingNumber <= 5) return '#e59400';
+        if (waitingNumber > 5) return '#00cc00';
+    }
+
     const nextLocation = () => {
         let index = locations.indexOf(selectedLocation);
         if (index === locations.length - 1) {
@@ -54,7 +60,7 @@ const Place = React.memo(() => {
     return (
         <div className="place">
             <div className="place__title">{title}</div>
-            <div className="place__subtitle">Before you: <span>{waiting}</span></div>
+            <div className="place__subtitle">Before you: <span style={{color: getWaitingColor(waiting)}}>{waiting}</span></div>
             <div className="place__action">
                 <Button variant={ButtonVariants.primary} size={ButtonSizes.normal}>
                     Fly in

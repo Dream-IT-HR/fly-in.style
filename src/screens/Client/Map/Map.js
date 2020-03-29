@@ -121,7 +121,7 @@ const Map = () => {
       }
       {
         showSearchMore &&
-          <div style={{position: 'absolute', bottom: '32%', alignSelf: 'center', width: '100%', display: 'flex', justifyContent: 'center'}}>
+          <div className="map__search-here">
             <Button variant={ButtonVariants.basic} size={ButtonSizes.small} onClick={handleSearchHere}>
                 Search here
             </Button>

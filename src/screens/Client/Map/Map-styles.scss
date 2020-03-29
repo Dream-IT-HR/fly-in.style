@@ -2,4 +2,13 @@
     position: fixed !important;
     top: 0;
     left: 0;
+
+    &__search-here {
+        position: absolute;
+        bottom: 32%;
+        left: calc(50% - 50px);
+        display: flex;
+        align-self: center;
+        justify-content: center;
+    }
 }
