@@ -1,6 +1,7 @@
 $theme-colors: (
-  "primary": #64B7FF,
+  "primary": #64b7ff,
   "secondary": #19ffef,
+  "white": #ffffff,
 
   "primary-front":rgba(0, 0, 0, 0.8),
   "primary-back":  #1C1F26,
@@ -19,6 +20,7 @@ $theme-colors: (
 
 /* ===  BUTTONS === */
 $border-radius: 4px;
+$border-radius-medium: 14px;
 
 /* ===  FONTS === */
 $font-path: './fonts';
