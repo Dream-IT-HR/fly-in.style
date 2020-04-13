@@ -5,7 +5,8 @@ export const ButtonVariants = {
     primary:'primary',
     secondary:'secondary',
     dark:'dark',
-    disabled:'disabled'
+    disabled:'disabled',
+    basic: 'basic',
 };
 
 export const ButtonSizes = {
@@ -21,7 +22,7 @@ const onClick = (linkPath) =>
     }
 }
 
-function fButton(props)  {
+const Button = React.memo(props => {
     let {id, className, size, variant, disabled, autoFocus, name, type, linkPath} = props;
 
     let handleClick = () => { onClick(linkPath); };
@@ -37,12 +38,13 @@ function fButton(props)  {
             className={
                 (className ? className + " ": "") +
                 "flybutton" + 
-                (size === ButtonSizes.large ? " flybutton__size--large": "") + 
+                (size === ButtonSizes.large ? " flybutton__size--large": "") +
                 (size === ButtonSizes.small ? " flybutton__size--small" : "") +
                 (variant === ButtonVariants.primary ? " flybutton__variant--primary": "") +
                 (variant === ButtonVariants.dark ? " flybutton__variant--dark": "") +
-                (variant === ButtonVariants.secondary ? " flybutton__variant--secondary": "") + 
-                (variant === ButtonVariants.disabled ? " flybutton__variant--disabled": "") 
+                (variant === ButtonVariants.secondary ? " flybutton__variant--secondary": "") +
+                (variant === ButtonVariants.disabled ? " flybutton__variant--disabled": "") +
+                (variant === ButtonVariants.basic ? " flybutton__variant--basic": "") 
                 } 
 
             name={name}
@@ -54,13 +56,18 @@ function fButton(props)  {
             {props.children}
         </button>
     );
-}    
-
-const Button = React.memo(fButton);
+});
 
 export default Button;
 
 Button.propTypes = {
-    variant: PropTypes.oneOf(Object.keys(ButtonVariants)).isRequired,
+    id: PropTypes.string,
+    className: PropTypes.string,
     size: PropTypes.oneOf(Object.keys(ButtonSizes)).isRequired,
+    variant: PropTypes.oneOf(Object.keys(ButtonVariants)).isRequired,
+    disabled: PropTypes.bool,
+    autoFocus: PropTypes.bool,
+    name: PropTypes.string,
+    type: PropTypes.string,
+    linkPath: PropTypes.string,
 };

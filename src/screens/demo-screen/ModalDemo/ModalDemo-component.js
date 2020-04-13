@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Modal from '../../../_shared/components/Modal';
 import Button, {ButtonVariants, ButtonSizes} from '../../../_shared/components/Button/Button-component';
 import useModal from '../../../_shared/hooks/useModal';

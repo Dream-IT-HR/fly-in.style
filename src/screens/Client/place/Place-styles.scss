@@ -1,0 +1,37 @@
+.place {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: map-get($theme-colors, "white");
+    box-shadow: 0px 5px 15px 2px rgba(0, 0, 0, 0.75);
+    font-family: $font-regular;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+
+    &__title {
+        font-size: 1.5rem;
+    }
+
+    &__subtitle {
+        font-size: 1.3rem;
+        font-family: $font-bold;
+    }
+
+    &__arrow {
+        cursor: pointer;
+
+        &--left {
+            position: absolute;
+            left: 10px;
+        }
+
+        &--right {
+            position: absolute;
+            right: 10px;
+        }
+    }
+}
