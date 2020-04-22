@@ -7,6 +7,7 @@ import HomepageRoot from './screens/homepage-screen/HomepageScreen-root';
 import Login from './screens/login-screen/LoginScreen';
 import About from './screens/about-screen/AboutScreen';
 import Demo from './screens/demo-screen/Demo-component';
+import Client from './screens/Client/client-screen/ClientScreen';
 
 class AppRouter extends Component {
     render() {
@@ -16,6 +17,7 @@ class AppRouter extends Component {
                 <PublicRoute restricted={false} component={About} path="/about-us" exact />
                 <PublicRoute restricted={true} component={Login} path="/login" exact />
                 <PublicRoute restricted={false} component={Demo} path="/demo" exact />
+                <PublicRoute restricted={false} component={Client} path="/client" exact />
             </Switch>
             //<div>
             /* {

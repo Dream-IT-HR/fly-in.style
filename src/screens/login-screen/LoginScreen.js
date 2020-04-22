@@ -1,6 +1,6 @@
 import React from 'reactn';
 import { PureComponent } from 'reactn';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import googleService from '../../services/googleService';
 
 import { Formik, Form, Field, ErrorMessage } from 'formik';
@@ -9,13 +9,11 @@ import authenticationService from '../../services/authenticationService';
 import config from '../../config.json';
 import SignUp from './SignUp';
 
-import Button, {ButtonVariants, ButtonSizes}  from '../../_shared/components/Button/Button-component';
+import Button, {ButtonVariants, ButtonSizes} from '../../_shared/components/Button/Button-component';
 
 import Translate from 'react-translate-component';
 import Modal from '../../_shared/components/Modal';
 import LocaleSwitcher from '../../_shared/components/LocaleSwitcher/LocaleSwitcher-component';
-
-// const Button = lazy(() => import('../../_shared components/Button/Button'));
 
 class FLogin extends PureComponent {
   constructor(props) {
@@ -74,8 +72,7 @@ class FLogin extends PureComponent {
         (!redirectToCaller && !tokenRefreshed ?
                 
             <div className="container">
-                {/* <Button variant={ButtonVariants.primary} size={ButtonSizes.large}>Login</Button>
-                <Button variant={ButtonVariants.primary} size={ButtonSizes.large}>Google</Button> */}
+              <Button variant={ButtonVariants.primary} size={ButtonSizes.large}>Test button</Button>
 
              <Formik
                 initialValues={{ email: '', password: '' }}
@@ -117,6 +114,11 @@ class FLogin extends PureComponent {
                       onFailure={this.handleGoogleResponseAsync}
                       redirectUri={callerLocation && callerLocation.pathname}
                   />
+              </div>
+              <div>
+                <Button variant={ButtonVariants.primary} size={ButtonSizes.large}>
+                  <Link to="/client">Client</Link>
+                </Button>
               </div>
               <div>
                 <Button className="signup" variant={ButtonVariants.primary} size={ButtonSizes.small} onClick={this.toggleSignUpModal}>

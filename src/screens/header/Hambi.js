@@ -1,11 +1,8 @@
 import React from 'react';
 
-function HambiFunction() {
-    // const[responsiveMenuIsOpen, setResponsiveMenuIsOpen] = useState(false);
-
+function HambiFunction({ onClick }) {
     return (
-        <div className="nav-icon">
-             {/* className={"animated slideInDown" + (responsiveMenuIsOpen ? " is-active" : "")} onClick={setResponsiveMenuIsOpen(!responsiveMenuIsOpen)}> */}
+        <div className="nav-icon" onClick={onClick}>
             <span className="nav-icon__bar1"></span>
             <span className="nav-icon__bar2"></span>
             <span className="nav-icon__bar3"></span>
