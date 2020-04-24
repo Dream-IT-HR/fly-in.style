@@ -7,15 +7,16 @@ import {
   GoogleMapContext
 } from '@googlemap-react/core';
 
-import Button,  { ButtonVariants, ButtonSizes } from '../../../_shared/components/Button/Button-component';
-import inactivePinIcon from '../../../_images/icons/inactiveMarker.svg';
-import activePinIcon from '../../../_images/icons/activeMarker.svg';
+import Button,  { ButtonVariants, ButtonSizes } from '../../../../_shared/components/Button/Button-component';
+import inactivePinIcon from '../../../../_images/icons/inactiveMarker.svg';
+import activePinIcon from '../../../../_images/icons/activeMarker.svg';
 import locations from '../mocks/locations';
+import mapPropTypes from './mapPropTypes';
 
 const mapStyle = {
   height: "70%",
   width: "100%",
-}
+};
 
 const Map = () => {
   const [errorGeoLocation, setErrorGeoLocation] = useState(false);
@@ -40,7 +41,7 @@ const Map = () => {
           },
         });
       }
-    } 
+    };
 
     const error = () => setErrorGeoLocation(true);
 
@@ -70,7 +71,7 @@ const Map = () => {
         )}
       </Formik>
     </>
-  )
+  );
 
   return (
     <div>
@@ -127,6 +128,8 @@ const Map = () => {
       }
     </div>
   )
-}
+};
+
+Map.propTypes = mapPropTypes;
 
 export default Map;

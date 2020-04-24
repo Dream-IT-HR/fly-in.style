@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import Toggle from '../../../_shared/components/Toggle/Toggle';
+import Toggle from '../../../../_shared/components/Toggle/Toggle';
 
 const Navigation = ({ closeNavigation, navigation }) => {
     const handleSmsNotification = status => console.log(status);

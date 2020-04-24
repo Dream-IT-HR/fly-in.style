@@ -23,7 +23,7 @@
 @import './screens/demo-screen/SpinnerDemo/SpinnerDemo-styles.scss';
 
 @import './_shared/components/Grid/Grid-styles.scss';
-@import './screens/Client/place/Place-styles.scss';
-@import './screens/Client/Map/Map-styles.scss';
-@import './screens/Client/client-screen/Client-styles.scss';
-@import './screens/Client/navigation/Navigation-styles.scss';
+@import 'apps/client/components/place/_place';
+@import 'apps/client/components/map/_map';
+@import 'apps/client/_client';
+@import 'apps/client/components/navigation/_navigation';

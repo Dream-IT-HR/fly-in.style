@@ -1,8 +1,8 @@
 import React, { useGlobal, setGlobal } from 'reactn';
 
-import Button,  { ButtonVariants, ButtonSizes } from '../../../_shared/components/Button/Button-component';
-import arrowLeft from '../../../_images/icons/arrow_left.svg';
-import arrowRight from '../../../_images/icons/arrow_right.svg';
+import Button,  { ButtonVariants, ButtonSizes } from '../../../../_shared/components/Button/Button-component';
+import arrowLeft from '../../../../_images/icons/arrow_left.svg';
+import arrowRight from '../../../../_images/icons/arrow_right.svg';
 
 import locations from '../mocks/locations';
 

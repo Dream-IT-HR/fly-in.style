@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { GoogleMapProvider } from '@googlemap-react/core';
 
-import Place from '../../Client/place';
-import Map from '../Map/Map';
+import Place from './components/place';
+import Map from './components/map/Map';
 
-import Grid from '../../../_shared/components/Grid';
-import Navigation from '../navigation/Navigation';
-import menuPerson from '../../../_images/icons/menuPerson.svg';
+import Grid from '../../_shared/components/Grid';
+import Navigation from './components/navigation/Navigation';
+import menuPerson from '../../_images/icons/menuPerson.svg';
 
 const Client = () => {
     const [navigation, setNavigation] = useState(false);
