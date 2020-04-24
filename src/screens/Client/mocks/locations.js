@@ -1,5 +1,3 @@
-import inactiveIcon from '../../../_images/icons/inactiveMarker.svg';
-
 const locations = [
     {
         id: 1,
@@ -8,7 +6,7 @@ const locations = [
         address: "Ilica 10",
         lat: 45.809943,
         lng: 15.952353,
-        icon: inactiveIcon,
+        selected: false,
     },
     {
         id: 2,
@@ -17,7 +15,7 @@ const locations = [
         address: "Hebrangova 25",
         lat: 45.802725,
         lng: 15.942402,
-        icon: inactiveIcon,
+        selected: false,
     },
     {
         id: 3,
@@ -26,7 +24,7 @@ const locations = [
         address: "Ilica 128",
         lat: 45.819245,
         lng: 15.952155,
-        icon: inactiveIcon,
+        selected: false,
     },
     {
         id: 4,
@@ -35,7 +33,7 @@ const locations = [
         address: "Brainimirova 12/d",
         lat: 45.812930,
         lng: 15.942607,
-        icon: inactiveIcon,
+        selected: false,
     },
 ];
 

@@ -1,17 +1,15 @@
 import { useState, useEffect, useContext } from 'react';
 import React, { setGlobal, useGlobal } from 'reactn';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import {
   MapBox,
   Marker,
   GoogleMapContext
 } from '@googlemap-react/core';
 
-import activePinIcon from '../../../_images/icons/activeMarker.svg';
-
 import Button,  { ButtonVariants, ButtonSizes } from '../../../_shared/components/Button/Button-component';
-
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-
+import inactivePinIcon from '../../../_images/icons/inactiveMarker.svg';
+import activePinIcon from '../../../_images/icons/activeMarker.svg';
 import locations from '../mocks/locations';
 
 const mapStyle = {
@@ -35,13 +33,14 @@ const Map = () => {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         });
-      } else {
-        setCenter({
-          lat: location.activeLocation.lat,
-          lng: location.activeLocation.lng,
+
+        setGlobal({
+          map: {
+            activeLocation: locations[0],
+          },
         });
       }
-    }
+    } 
 
     const error = () => setErrorGeoLocation(true);
 
@@ -94,22 +93,21 @@ const Map = () => {
         onDragEnd={() => setSearchMore(true)}
       />
       {
-        locations.map((location, index) => {
+        locations.map((loc, index) => {
           return (
             <div key={index}>
               <Marker
                 id={index}
                 opts={{
-                  position: location,
+                  position: loc,
                   opacity: 1,
-                  icon: location.icon,
+                  icon: (location && location.activeLocation && location.activeLocation.id === loc.id) ? activePinIcon : inactivePinIcon
                 }}
                 onClick={() => {
                   setGlobal({
                     map: {
                       activeLocation: {
-                        ...location,
-                        icon: activePinIcon,
+                        ...loc,
                       },
                     },
                   });
