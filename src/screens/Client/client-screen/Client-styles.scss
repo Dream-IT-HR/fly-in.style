@@ -1,5 +1,10 @@
 .client {
-    .nav-icon {
-        margin-top: 10px;
+    &__menu-icon {
+        z-index: 1;
+        margin: 15px;
+
+        &:hover {
+            cursor: pointer;
+        }
     }
 }
