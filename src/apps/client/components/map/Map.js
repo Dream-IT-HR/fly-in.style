@@ -11,7 +11,6 @@ import Button,  { ButtonVariants, ButtonSizes } from '../../../../_shared/compon
 import inactivePinIcon from '../../../../_images/icons/inactiveMarker.svg';
 import activePinIcon from '../../../../_images/icons/activeMarker.svg';
 import locations from '../mocks/locations';
-import mapPropTypes from './mapPropTypes';
 
 const mapStyle = {
   height: "70%",
@@ -32,7 +31,7 @@ const Map = () => {
       if (!location) {
         setCenter({
           lat: position.coords.latitude,
-          lng: position.coords.longitude,
+          lng: position.coords.longitude
         });
 
         setGlobal({
@@ -129,7 +128,5 @@ const Map = () => {
     </div>
   )
 };
-
-Map.propTypes = mapPropTypes;
 
 export default Map;

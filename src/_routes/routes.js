@@ -2,13 +2,13 @@ import React from 'react';
 
 // Components
 import HomepageRoot from '../screens/homepage-screen/HomepageScreen-root';
-import About from '../screens/about-screen/AboutScreen';
+// import About from '../screens/about-screen/AboutScreen';
 import Login from '../screens/login-screen/LoginScreen';
 // Errors
-import Error403 from '../screens/error-screens/Error403';
-import Error404 from '../screens/error-screens/Error404';
-import Error500 from '../screens/error-screens/Error500';
-import ErrorLink from '../screens/error-screens/ErrorLink';
+// import Error403 from '../screens/error-screens/Error403';
+// import Error404 from '../screens/error-screens/Error404';
+// import Error500 from '../screens/error-screens/Error500';
+// import ErrorLink from '../screens/error-screens/ErrorLink';
 
 const routes = [
     {
