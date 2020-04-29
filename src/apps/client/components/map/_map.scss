@@ -7,8 +7,6 @@
         position: absolute;
         bottom: 32%;
         left: calc(50% - 50px);
-        display: flex;
-        align-self: center;
-        justify-content: center;
+        @include flex-center;
     }
 }

@@ -1,6 +1,11 @@
-import { useState, useEffect, useContext } from 'react';
 import React, { setGlobal, useGlobal } from 'reactn';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { useState, useEffect, useContext } from 'react';
+import {
+  Formik,
+  Form,
+  Field,
+  ErrorMessage
+} from 'formik';
 import {
   MapBox,
   Marker,
@@ -8,14 +13,12 @@ import {
 } from '@googlemap-react/core';
 
 import Button,  { ButtonVariants, ButtonSizes } from '../../../../_shared/components/Button/Button-component';
-import inactivePinIcon from '../../../../_images/icons/inactiveMarker.svg';
-import activePinIcon from '../../../../_images/icons/activeMarker.svg';
+
+import mapOptions from './mapOptions';
 import locations from '../mocks/locations';
 
-const mapStyle = {
-  height: "70%",
-  width: "100%",
-};
+import inactivePinIcon from '../../../../_images/icons/inactiveMarker.svg';
+import activePinIcon from '../../../../_images/icons/activeMarker.svg';
 
 const Map = () => {
   const [errorGeoLocation, setErrorGeoLocation] = useState(false);
@@ -49,6 +52,16 @@ const Map = () => {
 
   const handleSearchHere = () => setSearchMore(!showSearchMore);
 
+  const onMarkerClick = location => {
+    setGlobal({
+      map: {
+        activeLocation: {
+          ...location,
+        },
+      },
+    });
+  };
+
   if (errorGeoLocation) return (
     <>
       <Formik
@@ -75,21 +88,10 @@ const Map = () => {
   return (
     <div>
       <MapBox
-        apiKey="AIzaSyCnP6m8gdQSmYkJavf7rpvXp5X4po-gkq4"
-        opts={{
-          center,
-          zoom: 15,
-          zoomControl: false,
-          fullscreenControl: false,
-          styles: [
-            {
-              featureType: 'poi',
-              stylers: [{visibility: 'off'}]
-            },
-          ]
-        }}
+        apiKey={mapOptions.apiKey}
+        opts={{center, ...mapOptions.mapBoxOptions}}
         className="map"
-        style={mapStyle}
+        style={mapOptions.mapStyles}
         onDragEnd={() => setSearchMore(true)}
       />
       {
@@ -103,15 +105,7 @@ const Map = () => {
                   opacity: 1,
                   icon: (location && location.activeLocation && location.activeLocation.id === loc.id) ? activePinIcon : inactivePinIcon
                 }}
-                onClick={() => {
-                  setGlobal({
-                    map: {
-                      activeLocation: {
-                        ...loc,
-                      },
-                    },
-                  });
-                }}
+                onClick={() => onMarkerClick(loc)}
               />
             </div>
           )

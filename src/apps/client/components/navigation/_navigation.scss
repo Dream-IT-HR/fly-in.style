@@ -61,6 +61,14 @@
       }
     }
 
+    &__toggle-wrappers {
+      margin: 50px 0;
+      padding: 20px 0;
+      text-align: center;
+      border-top: 1px solid getcolor(primary-light);
+      border-bottom: 1px solid getcolor(primary-light);
+    }
+
     &__close-action {
         right: 15px;
         top: 10px;
