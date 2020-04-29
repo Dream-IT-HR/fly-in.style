@@ -15,7 +15,7 @@
         height: 25px;
         position: relative;
     
-        border: 2px solid map-get($theme-colors, "primary-front");
+        border: 2px solid getcolor("primary-front");
         border-radius: 15px;
     
         &:hover {
@@ -33,12 +33,12 @@
         border-radius: 50%;
 
         &--false  {
-            background-color: map-get($theme-colors, "red");
+            background-color: getcolor("red");
             left: 1px;
         }
 
         &--true  {
-            background-color: map-get($theme-colors, "lime");
+            background-color: getcolor("lime");
 
             transform: translate(36px, 0);
             transition: all .5s ease-in-out;

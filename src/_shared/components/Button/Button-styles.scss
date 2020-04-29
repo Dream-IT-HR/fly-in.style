@@ -12,9 +12,9 @@
 
     &__variant {
         &--disabled {
-            background-color: map-get($theme-colors, "primary-back-darker");
-            color: map-get($theme-colors, "primary-light");
-            border: solid 1px map-get($theme-colors, "primary-light");
+            background-color: getcolor("primary-back-darker");
+            color: getcolor("primary-light");
+            border: solid 1px getcolor("primary-light");
             padding: 5px 10px;
             font-weight: bold;
             font-style: normal;
@@ -26,9 +26,9 @@
         }
 
         &--primary {
-            background-color: map-get($theme-colors, "primary-back");
-            color: map-get($theme-colors, "primary");
-            border: solid 1px map-get($theme-colors, "primary");;
+            background-color: getcolor("primary-back");
+            color: getcolor("primary");
+            border: solid 1px getcolor("primary");;
             padding: 5px 10px;
             font-weight: bold;
             font-style: normal;
@@ -39,24 +39,24 @@
         }
 
         &--secondary {
-            background-color: map-get($theme-colors, "secondary-back");;
-            border: solid 1px map-get($theme-colors, "primary");
-            color: map-get($theme-colors, "primary");
+            background-color: getcolor("secondary-back");;
+            border: solid 1px getcolor("primary");
+            color: getcolor("primary");
             padding: 5px 10px;
         }
 
         &--dark {
-            background-color: map-get($theme-colors, "dark-back");;
-            border: solid 1px map-get($theme-colors, "dark-front");
-            color: map-get($theme-colors, "dark-front");
+            background-color: getcolor("dark-back");;
+            border: solid 1px getcolor("dark-front");
+            color: getcolor("dark-front");
             padding: 5px 10px;
         }
 
         &--basic {
-            background-color: map-get($theme-colors, "white");;
+            background-color: getcolor("white");;
             border-radius: $border-radius-medium;
             border: none;
-            color: map-get($theme-colors, "primary");
+            color: getcolor("primary");
             padding: 5px 10px;
         }
     }

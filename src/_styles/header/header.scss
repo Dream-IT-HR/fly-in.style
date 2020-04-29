@@ -2,7 +2,7 @@
     width:100%;
     position: fixed;
     top: 0px;
-    background-color:map-get($theme-colors, "primary-light");
+    background-color:getcolor("primary-light");
     z-index: 1;
     
     &__nav {

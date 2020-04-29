@@ -16,7 +16,7 @@
         margin:2px;
         height: 4px;
         width: 100%;
-        background-color: map-get($theme-colors, "primary-back");
+        background-color: getcolor("primary-back");
         border-radius: 10px;
         opacity: 1;
         left: 0;

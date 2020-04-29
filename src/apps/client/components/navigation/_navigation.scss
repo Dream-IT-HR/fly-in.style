@@ -4,7 +4,7 @@
     top: 0;
     z-index: 1;
 
-    background-color: map-get($theme-colors, "white");
+    background-color: getcolor("white");
     max-width: 500px;
     width: 100%;
     height: 100vh;
@@ -33,14 +33,14 @@
       a {
         padding: 20px 0;
         text-decoration: none;
-        color: map-get($theme-colors, "primary-front");
+        color: getcolor("primary-front");
 
         &:hover {
           font-size: 1.2rem;
 
           &:before,
           &:after {
-            color: map-get($theme-colors, "warning");
+            color: getcolor("warning");
             content: "-";
           }
 
@@ -56,7 +56,7 @@
         &:visited,
         &:active,
         &:visited {
-          color: map-get($theme-colors, "primary-front");
+          color: getcolor("primary-front");
         }
       }
     }
