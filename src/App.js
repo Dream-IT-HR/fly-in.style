@@ -1,7 +1,6 @@
 import React, {lazy, Suspense} from 'reactn';
 import {BrowserRouter} from 'react-router-dom';
-import './App.css';
-import './styles.scss';
+import './_styles/styles.scss';
 const AppWrapper = lazy(() => import('./AppWrapper'));
 
 function App() {
